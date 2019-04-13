@@ -13,7 +13,8 @@
        <?php 
                 
                     include 'header.php';
-					$bdd = new PDO('mysql:host=127.0.0.1;dbname=projet2', 'root', '');
+					require 'database.php';
+                    $bdd=Database::connect();
 
 					if(isset($_POST['Valider']))
 					{
@@ -27,15 +28,14 @@
 
 						
 
-						$bdd->exec("INSERT INTO utilisateur(NOM, PRENOM, PSEUDO, MAIL, MOTDEPASSE, DATENAISS) VALUES('".$Nom."','".$Prenom."','".$Pseudo."','".$adresse_mail."','".$Mot_de_passe."', DATE('".$date_naiss."'))");
+						$ins=$bdd->prepare("INSERT INTO utilisateur(NOM, PRENOM, PSEUDO, MAIL, MOTDEPASSE, DATENAISS) VALUES(?, ?, ?, ?, ?, ?)");
+                        $ins->execute(array($Nom, $Prenom, $Pseudo, $adresse_mail,$Mot_de_passe,$date_naiss));
 					}
 
 					echo("Inscription réussie");
        ?>
     
-          <footer>
-          <p>YOOOOOOOOOOOOOOOO</p>
-          </footer>
+          <?php include 'footer.html'; ?>
 
   </body>
 

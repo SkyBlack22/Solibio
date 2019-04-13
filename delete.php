@@ -4,7 +4,8 @@
      {
                $id = checkInput($_GET['id']);
      }
-    $bdd = new PDO('mysql:host=127.0.0.1;dbname=projet2', 'root', '');
+    require 'database.php';
+    $bdd = Database::connect;
     if(!empty($_POST)) 
     {
         $id = checkInput($_POST['id']);
