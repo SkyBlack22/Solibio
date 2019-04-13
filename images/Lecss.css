@@ -1,0 +1,303 @@
+/*GENERAL*/
+*
+{
+	margin: 0;
+	padding:0;
+}
+body
+{
+	font-family: Arial,sans-serif;
+	font-size:15px;
+}
+
+a
+{
+	text-decoration: none;
+	color: #444;
+}
+
+a:hover
+{
+	color: orange;
+}
+
+h2
+{
+	color: #444;
+	font-size: 38px;
+}
+.container
+{
+	width: 940px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+
+
+.orange
+{
+	color: #ff7a00;
+}
+
+
+/*HEADER*/
+header{
+	height: 90px;
+}
+
+header h1
+{
+	float:left;
+	margin-top:22px;
+}
+header nav{
+	float:right;
+	margin-top:32px;
+}
+
+header nav ul
+{
+	float: right;
+	padding-right: 10px;
+}
+
+header nav ul li
+{
+	float: right;
+	display: inline-block;
+	padding-left: 10px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+
+
+
+
+
+/*MAIN IMAGE*/
+
+#main-image
+{
+	height: 330px;
+	background: url('images/fond.jpg') center;
+	margin-top: 80px;
+	padding-top: 200px;
+}
+
+
+.button
+{
+	display: block;
+	width:300px;
+	height: 50px;
+	background: #ff7a00;
+	color: #ffffff;
+	font-size: 20px;
+	margin: 0 auto;
+	line-height: 50px;
+	text-align: center;
+	border-radius: 7px;
+}
+
+
+
+
+/* STEPS*/
+
+#steps
+{
+	background-color: #efefef;
+	padding: 100px 0;
+	padding-left: 75px;
+	height: 300px;
+}
+
+#steps article
+{
+	width: 270px;
+	height: 270px;
+	float: left;
+	color: black;
+}
+
+#steps article div
+{
+	width: 270px;
+	height: 270px;
+	float: left;
+	border-radius: 11px;
+	color: black;
+}
+
+#article1 div
+{
+	background-size: 140% ;
+	background-image: url(images/Image1);
+	box-shadow: 7px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+#article2 div
+{
+	background-size: 140% ;
+	background-image: url(images/Image2);
+	box-shadow: 7px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+#article3 div
+{
+	background-size: 140% ;
+	background-image: url(images/Image3);
+	box-shadow: 7px 10px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+#steps article:nth-child(1)
+{
+	margin-right: 30px;
+}
+
+#steps article:nth-child(2)
+{
+	margin-right: 30px;
+}
+
+
+
+#steps p
+{
+	text-align: center;
+}
+
+
+#Image1
+{
+	height: 172px;
+	width: 172px;
+	padding-left: 50px;
+	padding-top: 35px;
+	padding-bottom: 6px;
+}
+
+#Image2
+{
+	height: 172px;
+	width: 172px;
+	padding-left: 50px;
+	padding-top: 35px;
+	padding-bottom: 6px;
+}
+
+#Image3
+{
+	height: 172px;
+	width: 172px;
+	padding-left: 50px;
+	padding-top: 35px;
+	padding-bottom: 6px;
+}
+
+#steps #h41,#h42
+{
+	padding-left: 90px;
+}
+#steps #h43
+{
+	padding-left: 103px;
+}
+
+
+#steps #p1,#p2,#p3
+{
+	font-size: 18px;
+	background-color: white;
+	border-radius: 6px;
+	padding: 1px;
+	margin: 4px;
+	opacity: 0.8;
+}
+
+footer
+{
+	height: 150px;
+}
+
+
+/*PAGE CONNEXION*/
+
+.container2
+{
+	width: 300px;
+	margin: 0 auto;
+	padding: 20px;
+	background-color: #FF8206;
+	height: 340px;
+	margin-top: 50px;
+	padding-top: 30px;
+	border-radius: 25px;
+}
+
+.container2 div
+{
+	position: relative;
+	padding-left: 31px;
+	margin-top:30px; /*Pour modifier la hauteur entre le TextBox et l'image user*/
+}
+
+
+#TextBox
+{
+	margin-top: 50px;
+	margin-bottom: 18px;
+	border: 5px;
+}
+
+#TextBox2
+{
+	position: relative;
+    margin-top: 18px;
+}
+
+#TextBox3
+{
+	position: relative;
+    margin-top: 20px;
+}
+
+#ImageConnection
+{
+	height: 60%;
+	position: static;
+	display: block;
+	margin: 0 auto;
+	background-attachment: fixed;
+}
+
+#TextBox1 
+{
+	border: 8px;
+}
+
+input[type=text] {
+  border: 1px solid red;
+  border-radius: 4px;
+}
+
+input[type=password] {
+  border: 1px solid red;
+  border-radius: 4px;
+}
+
+#TextBox3
+{
+	margin-left: 225px;
+	margin-top: 34px;
+}
+
+#TextBox3 button
+{
+	  border: 1px solid #666;
+ 	  border-radius: 3px;
+}
