@@ -25,6 +25,14 @@
         <link href="https://fonts.googleapis.com/css?family=Sniglet" rel="stylesheet">
      </head>
 <body>
+    <?php 
+    if(!empty($_SESSION['ID']) AND ($_SESSION['ID'] == 33))
+    {
+        echo'<ul>
+        <li id="boutondeco" class="decolink"><a href="admin/viewuser.php">Supprimer Utilisateur</a></li>
+        <li id="boutondeco" class="decolink"><a href="admin/deleterecette.php">Supprimer Recette</a></li>';
+    }
+    ?>
     <?php
     if(!empty($_SESSION['ID']))
     {
@@ -34,6 +42,7 @@
         <li id="boutondeco"  class="decolink"><a href="deconnexion.php">Se déconnecter</a></li>
         </ul>';
     } ?>
+    
     
     <?php include 'footer.html'; ?>
 </body>

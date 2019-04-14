@@ -537,8 +537,7 @@ button:hover
   -webkit-border-radius: 16;
   -moz-border-radius: 16;
   border-radius: 16px;
-  font-family: Arial;
-  color: #ffffff;
+  color: #fff;
   font-size: 18px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
@@ -555,7 +554,7 @@ button:hover
   text-decoration: none;
 }
 .modiflink{
-background: #0df009;
+  background: #0df009;
   background-image: -webkit-linear-gradient(top, #0df009, #0cf20c);
   background-image: -moz-linear-gradient(top, #0df009, #0cf20c);
   background-image: -ms-linear-gradient(top, #0df009, #0cf20c);
@@ -564,8 +563,7 @@ background: #0df009;
   -webkit-border-radius: 16;
   -moz-border-radius: 16;
   border-radius: 16px;
-  font-family: Arial;
-  color: #ffffff;
+  color: #fff;
   font-size: 22px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
