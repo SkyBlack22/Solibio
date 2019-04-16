@@ -65,7 +65,7 @@
         <link href="https://fonts.googleapis.com/css?family=Sniglet" rel="stylesheet">
      </head>
 <body>
-    
+    <div id="Container5">
     <h2>Edition de mon profil</h2>
     <form method="post" action="">
         <label>Pseudo : </label>
@@ -76,9 +76,10 @@
         <input type="password" name="newmdp1" placeholder="Mot de passe" ><br/><br/>
         <label> Confirmation du Mot de passe : </label>
         <input type="password" name="newmdp2" placeholder="Confirmation du mot de passe"><br/><br/>
-        <button type="submit">Valider</button>
+        <button type="submit" id="modifbouton">Valider</button>
         <?php if(isset($msg)) { echo $msg; } ?>
     </form>
+    </div>
     <?php include 'footer.html'; ?>
 </body>
 </html>

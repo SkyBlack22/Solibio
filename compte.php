@@ -20,7 +20,7 @@
 
 <!DOCTYPE html">
 <html>
-     <head><title>Connexion</title>
+     <head><title>Mon Compte</title>
         <link href ="Lecss.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Sniglet" rel="stylesheet">
      </head>
@@ -29,8 +29,9 @@
     if(!empty($_SESSION['ID']) AND ($_SESSION['ID'] == 33))
     {
         echo'<ul>
-        <li id="boutondeco" class="decolink"><a href="admin/viewuser.php">Supprimer Utilisateur</a></li>
-        <li id="boutondeco" class="decolink"><a href="admin/deleterecette.php">Supprimer Recette</a></li>';
+        <li id="boutondeco" class="decolink"><a href="admin/viewuser.php">Gestion Utilisateurs</a></li>
+        <li id="boutondeco" class="decolink"><a href="admin/deleterecette.php">Gestion Recettes</a></li>
+        <li id="boutondeco" class="decolink"><a href="admin/viewcom.php">Gestion Commmentaires</a></li>';
     }
     ?>
     <?php
@@ -38,7 +39,7 @@
     {
         echo'<ul>
         <li id="boutonmodif" class="modiflink"><a  href="recettecompte.php">Afficher recette</a></li>
-        <li id="boutonmodif" class="modiflink"><a  href="modifiercompte.php">Modifier</a></li>
+        <li id="boutonmodif" class="modiflink"><a  href="modifiercompte.php">Modifier votre compte</a></li>
         <li id="boutondeco"  class="decolink"><a href="deconnexion.php">Se déconnecter</a></li>
         </ul>';
     } ?>

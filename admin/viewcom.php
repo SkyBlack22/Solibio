@@ -7,7 +7,7 @@
 
 <!DOCTYPE html">
 <html>
-     <head><title>Gestion des utilisateurs</title>
+     <head><title>Gestion des commentaires</title>
         <link href ="../Lecss.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Sniglet" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
@@ -43,30 +43,30 @@
     
     <div class="container admin">
             <div class="row">
-                <h1><strong>Liste des utilisateurs</strong></h1>
+                <h1><strong>Liste des commentaires</strong></h1>
                 <table class="table table-striped table-bordered">
                   <thead>
                     <tr>
-                      <th>Nom</th>
-                      <th>Prénom</th>
-                      <th>Adresse Mail</th>
-                      <th>Date de naissance</th>
+                      <th>Pseudo du posteur</th>
+                      <th>Contenu du commentaire</th>
+                      <th>Nom Recette</th>
+                      <th>Id util</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                     
                   <tbody>
                       <?php
-                        $statement = $bdd->query('SELECT utilisateur.ID, utilisateur.NOM, utilisateur.PRENOM, utilisateur.MAIL, utilisateur.DATENAISS  FROM utilisateur  ORDER BY utilisateur.ID DESC');
+                        $statement = $bdd->query('SELECT utilisateur.ID, utilisateur.PSEUDO, commentaire.id, commentaire.contenu , recettes.nom      FROM utilisateur, commentaire, recettes WHERE utilisateur.ID= commentaire.id_utilisateur AND commentaire.id_recette= recettes.id  ORDER BY commentaire.id DESC');
                         while($item = $statement->fetch()) 
                         {
                             echo '<tr>';
-                            echo '<td>'. $item['NOM'] . '</td>';
-                            echo '<td>'. $item['PRENOM'] . '</td>';
-                            echo '<td>'. $item['MAIL']  . '</td>';
-                            echo '<td>'. $item['DATENAISS'] . '</td>';
+                            echo '<td>'. $item['PSEUDO'] . '</td>';
+                            echo '<td>'. $item['contenu'] . '</td>';
+                            echo '<td>'. $item['nom']  . '</td>';
+                            echo '<td>'. $item['ID'] . '</td>';
                             echo '<td width=150>';
-                            echo '<a class="btn btn-danger" href="deluser.php?id='.$item['ID'].'"><span class="glyphicon glyphicon-remove"></span> Supprimer</a>';
+                            echo '<a class="btn btn-danger" href="delcom.php?id='.$item['id'].'"><span class="glyphicon glyphicon-remove"></span> Supprimer</a>';
                             echo '</td>';
                             echo '</tr>';
                         }

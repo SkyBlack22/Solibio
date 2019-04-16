@@ -585,3 +585,61 @@ button:hover
   background-image: linear-gradient(to bottom, #3a9c0c, #3a9c0c);
   text-decoration: none;
 }
+
+/* MODIF COMPTE */
+
+#Container5
+{
+    width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #FF8206;
+    height: 363px;
+    margin-top: 80px;
+    padding-top: 40px;
+    border:1px black solid;
+    -moz-box-shadow: 10px 10px 12px 0px #656565;
+    -webkit-box-shadow: 10px 10px 12px 0px #656565;
+    -o-box-shadow: 10px 10px 12px 0px #656565;
+    box-shadow: 10px 10px 12px 0px #656565;
+    filter:progid:DXImageTransform.Microsoft.Shadow(color=#656565, Direction=134, Strength=12);
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 25px;
+}
+
+#Container5 input
+{
+    height: 35px;
+    width: 330px;
+    margin-left: auto;
+    margin: 0 auto;
+    margin-left:37px;
+    margin-top:25px;
+    text-align: center;
+    border-radius: 12px;
+}
+
+#Container5 h2
+{
+    font-size:30px;
+    color:#fff;
+    text-align: center;
+    margin-bottom: 30px;
+    text-shadow: 0.1em 0.1em 0.05em #333
+}
+#modifbouton{
+  position: static;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: orange;
+  border: 1px black solid;
+  border-radius: 15px;
+  box-shadow: 0 3px #999;
+  margin-top:17px;
+  margin-left:39%;
+}
