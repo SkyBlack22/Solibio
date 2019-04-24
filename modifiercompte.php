@@ -68,14 +68,10 @@
     <div id="Container5">
     <h2>Edition de mon profil</h2>
     <form method="post" action="">
-        <label>Pseudo : </label>
-        <input type="text" name="newpseudo" placeholder="Pseudo" value="<?php echo $user['PSEUDO']; ?>"><br/><br/>
-        <label>Mail : </label>
-        <input type="text" name="newmail" placeholder="Mail" value="<?php echo $user['MAIL']?>"><br/><br/>
-        <label>Mot de passe : </label>
-        <input type="password" name="newmdp1" placeholder="Mot de passe" ><br/><br/>
-        <label> Confirmation du Mot de passe : </label>
-        <input type="password" name="newmdp2" placeholder="Confirmation du mot de passe"><br/><br/>
+        <input type="text" name="newpseudo" placeholder="Pseudo" value="<?php echo $user['PSEUDO']; ?>"><br/>
+        <input type="text" name="newmail" placeholder="Mail" value="<?php echo $user['MAIL']?>"><br/>
+        <input type="password" name="newmdp1" placeholder="Mot de passe" ><br/>
+        <input type="password" name="newmdp2" placeholder="Confirmation du mot de passe">
         <button type="submit" id="modifbouton">Valider</button>
         <?php if(isset($msg)) { echo $msg; } ?>
     </form>

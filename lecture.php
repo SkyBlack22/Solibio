@@ -40,7 +40,7 @@
                             echo '<td>'. $item['tempsprepa'] . '</td>';
                             echo '<td>'. $item['tpscuisson']  . '</td>';
                             echo '<td>'. $item['puissancecuisson'] . '</td>';
-                            echo '<td width=300>';
+                            echo '<td width=150>';
                             echo '<a class="btn btn-default" href="view.php?id='.$item['id'].'"><span class="glyphicon glyphicon-eye-open"></span> Voir</a>';
                             echo ' ';
                             echo '</td>';

@@ -88,7 +88,7 @@ $commentaires->execute(array($id));
                         <label>Nom:</label><?php echo '  '.$item['nom'];?>
                       </div>
                       <div class="form-group">
-                        <label>Ingredients:</label><?php echo '  '.$ingredient['libelle'];?>
+                        <label>Ingredients:</label><?php echo '  ';while($ingr = $statement2->fetch()) { echo $ingr['libelle']; echo'; '; } ?>
                       </div>
                       <div class="form-group">
                         <label>Recette:</label><?php echo '  '.$item['recette'];?>
@@ -100,7 +100,7 @@ $commentaires->execute(array($id));
                         <label>Temps de cuisson:</label><?php echo '  '.$item['tpscuisson'];?>
                       </div>
                       <div class="form-group">
-                        <label>Image:</label><?php echo '  '.$item['data_img'];?>
+                        <label>Image:</label><img src="<?php echo 'upload/'.$item['data_img'];?>" alt="...">
                       </div>
                     </form>
                     <br>

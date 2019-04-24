@@ -22,7 +22,11 @@ include 'header.php';
        <br/>
        <br/>
        <br/>
-       <h1 id="Enregistrement" align="center"><strong><u>Enregistrement d'une Recette </u></strong></h1>
+      <?php 
+      if(!empty($_SESSION['ID']))
+      {
+      ?>
+        <h1 id="Enregistrement" align="center"><strong><u>Enregistrement d'une Recette </u></strong></h1>
        <form method="post" action="enregistrement.php" enctype="multipart/form-data" name="uplo">
           <div class="Container4">
 
@@ -68,7 +72,15 @@ include 'header.php';
                  <input id="Enregistrer" class="Valider" type="submit" name="inscription" value="Enregistrer" />
             </div>
           </div>
-        </form>
+        </form>;
+      <?php }
+      else 
+      {
+          echo'Vous devez être connecté pour ajouter une recette';
+      }
+      ?>
+       
+       
       <?php include 'footer.html'; ?>
   </body>
 </html>
