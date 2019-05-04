@@ -49,7 +49,6 @@
                     <tr>
                       <th>Pseudo du posteur</th>
                       <th>Contenu du commentaire</th>
-                      <th>Nom Recette</th>
                       <th>Id util</th>
                       <th>Actions</th>
                     </tr>
@@ -57,13 +56,12 @@
                     
                   <tbody>
                       <?php
-                        $statement = $bdd->query('SELECT utilisateur.ID, utilisateur.PSEUDO, commentaire.id, commentaire.contenu , recettes.nom      FROM utilisateur, commentaire, recettes WHERE utilisateur.ID= commentaire.id_utilisateur AND commentaire.id_recette= recettes.id  ORDER BY commentaire.id DESC');
+                        $statement = $bdd->query('SELECT utilisateur.ID, utilisateur.PSEUDO, commentaire.id, commentaire.contenu FROM utilisateur, commentaire WHERE utilisateur.ID= commentaire.id_utilisateur  ORDER BY commentaire.id DESC');
                         while($item = $statement->fetch()) 
                         {
                             echo '<tr>';
                             echo '<td>'. $item['PSEUDO'] . '</td>';
                             echo '<td>'. $item['contenu'] . '</td>';
-                            echo '<td>'. $item['nom']  . '</td>';
                             echo '<td>'. $item['ID'] . '</td>';
                             echo '<td width=150>';
                             echo '<a class="btn btn-danger" href="delcom.php?id='.$item['id'].'"><span class="glyphicon glyphicon-remove"></span> Supprimer</a>';

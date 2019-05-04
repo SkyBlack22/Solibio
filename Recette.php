@@ -5,12 +5,14 @@ include 'header.php';
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8"/>
-    <title>Les recettes</title>
-    <link href ="Lecss.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Sniglet" rel="stylesheet">
-    <script src="js/addInput.js" language="Javascript" type="text/javascript"></script>
-  </head>
+        <link href ="Lecss.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Sniglet" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="js/addInput.js" language="Javascript" type="text/javascript"></script>
+    </head>
   
   <body id="bodyRecette">
 
@@ -33,21 +35,15 @@ include 'header.php';
             <div class="RecetteClassLabel"  id="ClassR1">
             <label class="labelConIns2" for="nom">Nom : <input type="text" name="nom" id="nom" /></label>
             </div>
-            
-           
-            
                <div class="RecetteClassLabel" id="ClassR2">
                <label  class="labelConIns2" for="puissancecuisson">Puissance de Cuisson : <input class="RecettesLabel" name="puissancecuisson" type="text" id="puissancecuisson" size="15" /></label></div>
-            
             
             <div class="RecetteClassLabel" id="ClassR3">
             <label for="tpscuisson">Temps de Cuisson : <input name="tpscuisson" type="text" id="tpscuisson" size="15" /></label>
             </div>
-
             <div class="RecetteClassLabel" id="ClassR4">
             <label for="tempsprepa">Temps de Pr&eacute;paration : <input name="tempsprepa" type="text" id="tempsprepa" size="15" /></label>
             </div>
-
             <div class="RecetteClassLabel" id=dynamicInput>
                 Ingredient 1 :<input type="text" name="myInputs[]">
             </div>
@@ -58,7 +54,7 @@ include 'header.php';
                  
                  Recette : <br />
                  
-                 <textarea name="recette" cols="70" rows="10"></textarea>
+                 <textarea name="recette" cols="58" rows="7"></textarea>
                  <br />
                  <br />
                  

@@ -5,7 +5,6 @@
      $bdd=Database::connect();
      if(!empty($_SESSION['ID']))
      {
-        
         $requser=$bdd->prepare("SELECT * FROM utilisateur WHERE ID= ?");
         $requser->execute(array($_SESSION['ID']));
         $user = $requser->fetch();
