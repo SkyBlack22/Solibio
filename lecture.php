@@ -1,4 +1,22 @@
-<?php include 'header.php'; ?>
+<?php 
+    include 'header.php';
+    require('database.php');
+    $bdd=Database::connect();
+    $recetteParPage=5;
+    $recettesTotalesReq=$bdd->query('SELECT id from recettes');
+    $recettesTotales= $recettesTotalesReq->rowCount();   
+    $pagesTotales = ceil($recettesTotales/$recetteParPage);
+    if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $pagesTotales) {
+       $_GET['page'] = intval($_GET['page']);
+       $pageCourante = $_GET['page'];
+    } else {
+       $pageCourante = 1;
+    }
+    $depart = ($pageCourante-1)*$recetteParPage;
+?>
+
+ 
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -30,9 +48,7 @@
                     
                   <tbody>
                       <?php
-                        require('database.php');
-                        $bdd=Database::connect();
-                        $statement = $bdd->query('SELECT recettes.id, recettes.nom, recettes.tempsprepa, recettes.tpscuisson, recettes.puissancecuisson  FROM recettes  ORDER BY recettes.id DESC');
+                        $statement = $bdd->query('SELECT recettes.id, recettes.nom, recettes.tempsprepa, recettes.tpscuisson, recettes.puissancecuisson  FROM recettes  ORDER BY recettes.id DESC LIMIT '.$depart.','.$recetteParPage);
                         while($item = $statement->fetch()) 
                         {
                             echo '<tr>';
@@ -51,6 +67,16 @@
                   </tbody>
                 </table>
             </div>
+            <ul class="pagination">
+                <li><a href="?page=1">First</a></li>
+                <li class="<?php if($pageCourante <= 1){ echo 'disabled'; } ?>">
+                <a href="<?php if($pageCourante <= 1){ echo '#'; } else { echo "?page=".($pageCourante - 1); } ?>">Prec</a>
+                </li>
+                <li class="<?php if($pageCourante >= $pagesTotales){ echo 'disabled'; } ?>">
+                <a href="<?php if($pageCourante >= $pagesTotales){ echo '#'; } else { echo "?page=".($pageCourante + 1); } ?>">Next</a>
+                </li>
+                <li><a href="?page=<?php echo $pagesTotales; ?>">Last</a></li>
+            </ul>
         </div>
       <?php include 'footer.html'; ?>
      </body>

@@ -77,6 +77,10 @@ $commentaires->execute(array($id));
   
   <body>
    		
+      <a href="like.php?t=1&id=<?= $id ?>">J'aime</a>(<?= $likes ?>)
+        <br/>
+        <a href="like.php?t=2&id=<?= $id ?>">J'aime pas</a>(<?= $dislikes ?>)
+        <br/>
        
         <div class="container admin">
             <div class="row">
@@ -112,10 +116,7 @@ $commentaires->execute(array($id));
             </div>
        </div>
        
-       <a href="like.php?t=1&id=<?= $id ?>">J'aime</a>(<?= $likes ?>)
-        <br/>
-        <a href="like.php?t=2&id=<?= $id ?>">J'aime pas</a>(<?= $dislikes ?>)
-        <br/>
+       
       
       <h2>Commentaire</h2>
       <form method="POST">

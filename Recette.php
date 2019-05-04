@@ -77,6 +77,9 @@ include 'header.php';
       else 
       {
           echo'Vous devez être connecté pour ajouter une recette';
+          echo '<div class="form-actions">
+                         <a class="btn btn-primary" href="lecture.php"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
+                         </div>';
       }
       ?>
        
