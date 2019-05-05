@@ -1,4 +1,8 @@
 /*GENERAL*/
+html
+{
+    font-family: 'Sniglet', sans-serif;
+}
 *
 {
 	margin: 0;
@@ -6,7 +10,7 @@
 }
 body
 {
-	font-family: Sniglet,sans-serif;
+	font-family: 'Sniglet',sans-serif;
 	font-size:18px;
 }
 
@@ -20,7 +24,12 @@ header
 }
 header ul li
 {
+    background-color: white;
     color: black;
+}
+header .container
+{
+    background-color: white;
 }
 a
 {
@@ -50,9 +59,10 @@ textarea{
 
 .container
 {
+    font-family: Sniglet,sans-serif;
 	width: 940px;
 	margin: 0 auto;
-	padding: 20px;
+	padding: 0px;
 }
 
 .footerBasic{
@@ -104,6 +114,7 @@ header nav ul li
 	padding-left: 10px;
 	font-weight: bold;
 	text-transform: uppercase;
+    background-color: white;
 }
 
 
@@ -136,7 +147,7 @@ footer h1
 
 #main-image
 {
-	height: 330px;
+	height: 350px;
 	background: url('images/fond.jpg') center;
 	margin-top: 0px;
 	padding-top: 200px;
@@ -414,12 +425,12 @@ button:hover
 
 #ImageInscription
 {
-	height: 50%;
+	height: 40%;
 	position: static;
 	display: block;
 	margin: 0 auto;
 	background-attachment: fixed;
-	padding-bottom: 25px;
+	padding-bottom: 20px;
 }
 
 
@@ -664,4 +675,10 @@ button:hover
     border: none;
     outline: none;
     box-shadow: none;
+}
+
+.help-inline
+{
+    color: red;
+    font-size: 15px;
 }

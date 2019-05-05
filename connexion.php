@@ -24,7 +24,7 @@
             $userinfo=$requser->fetch();
             $_SESSION['ID'] = $userinfo['ID'];
             $_SESSION['pseudo'] = $userinfo['PSEUDO'];
-            header("Location: index2.php?id=".$_SESSION['ID']);
+            header("Location: index.php?id=".$_SESSION['ID']);
         }
        
       else {

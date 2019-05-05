@@ -14,7 +14,7 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                     <a class="dropdown-item" href="modifiercompte.php">Modifier compte</a>
                                     <a class="dropdown-item" href="recettecompte.php">Afficher Recette</a>
-                                    <a class="dropdown-item" href="compte.php">CC</a>
+                                    <a class="dropdown-item" href="compte.php">Mon Compte</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="deconnexion.php">Se déconnecter</a>
                                 </div>
