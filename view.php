@@ -104,15 +104,22 @@ $commentaires->execute(array($id));
                       <div class="form-group">
                         <label>Temps de cuisson:</label><?php echo '  '.$item['tpscuisson'];?>
                       </div>
-                      <div class="form-group">
-                        <label>Image:</label><img src="<?php echo 'upload/'.$item['data_img'];?>" alt="...">
-                      </div>
                     </form>
                     <br>
+                </div>
+                   <div class="col-sm-6 site">
+                    <div class="thumbnail">
+                        <img src="<?php echo 'images/'.$item['data_img'];?>" alt="...">
+                          <div class="caption">
+                            <h4><?php echo $item['nom'];?></h4>
+                            <p><?php echo $item['tempsprepa'];?></p>
+                          </div>
+                    </div>
+                </div>
                     <div class="form-actions">
                       <a class="btn btn-primary" href="lecture.php"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
                     </div>
-                </div> 
+                 
                 
             </div>
        </div>

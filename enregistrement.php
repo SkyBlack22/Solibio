@@ -11,69 +11,7 @@
           <?php
           include 'header.php';
           
-          $destin = "upload"; // changer ceci par le nom du dossier destinataire souhaité
-              if (isset($_POST["drapeau"]))
-              { 
-                   echo '<h3>Envoi des fichiers ...</h3>';
-              //==========================================================================================
-                    for($x=0;$x<sizeof($_FILES["srcfic"]["name"]);$x++)
-                    { 
-                         $nomup = $_FILES['srcfic']['name'][$x];
-                         if ($_FILES['srcfic']['error'][$x] >0)
-                         {
-                              echo 'Erreur sur le fichier :&nbsp;' . $_FILES['srcfic']['error'][$x] . "<br /><br />";
-                         }
-                         else
-                         {
-                              if (file_exists("$destin/$nomup")) // si le fichier existe déjà, renommer l'ancien
-                              {
-                                   $ancienfic = $nomup . microtime() . ".old" ; // certitude de n'avoir pas 2 noms pareils
-                                   rename("$destin/$nomup","$destin/$ancienfic");
-                                   echo "<br />Le fichier " . $nomup . " existe déjà<br />L'ancien " . $nomup . " sera renommé " . $ancienfic . "<br />";
-                              }
-                         $siz = round($_FILES['srcfic']['size'][$x] / 1024,2); // calcul de la taille en Ko
-                         $typ = $_FILES['srcfic']['type'][$x]; // examen du type MIME
-                         echo "Type&nbsp;:&nbsp;$typ<br />Taille&nbsp;:&nbsp;$siz&nbsp;Ko<br />";
-                         if($siz > 2256) // si la taille du fichier est supérieure à 2256 Ko
-                         {
-                              echo "Fichier &quot;$nom&quot; trop volumineux pour l'upload<br /><br />";
-                         }
-                         else // sinon, filtrer les types MIME admis avant d'uploader
-                         {
-                              switch ($typ)
-                              {
-                                   case "image/gif":
-                                   case "image/pjpeg":
-                                   case "image/jpeg":
-                                   case "image/x-png":
-                                   case "image/png":
-                                   case "image/tiff":
-                                   case "image/bmp":
-                              if(move_uploaded_file($_FILES['srcfic']['tmp_name'][$x],"$destin/$nomup")) // si tout s'est bien passé
-                              {
-                                   echo "<strong>Le fichier &quot;" . $_FILES['srcfic']['name'][$x] . "&quot; a été correctement envoyé ";
-                                   echo "dans le dossier &quot;$destin/&quot;</strong><br><br />";
-                                   chmod("$destin/$nomup",0777);
-                              }
-                              else // sinon (case restée vide, ou fichier pas passé...)
-                              { 
-                                   if ($nomup=="") $nomup = "Fichier_Inconnu";
-                                   { 
-                                        echo "Désolé, je n'ai pas pu envoyer le fichier &quot;$nom&quot; dans le dossier &quot;$destin/&quot; !<br /><br />"; 
-                                   }
-              }
-              break;
-              // par défaut: rejeter les fichiers autres qu'images
-              default:echo "<br />Fichier &quot;$nom&quot; d'un type incorrect<br /><br />";break;
-              } // fermeture de switch(type)
-              } // fermeture de if(size>256) else...
-              } // fermeture de if(error) else...
-              } // fermeture de for(x=0;...)
-              //==========================================================================================================
-              } // fermeture de if(isset...)
-              // Fin de l'upload du fichier
-          
-          
+          $destin = "upload"; // changer ceci par le nom du dossier destinataire souhai
                require('database.php');
                $bdd=Database::connect();
           
@@ -96,7 +34,38 @@
 
                                    // Variable pour la phote uploader pour recuperer le nom etle repertoire
                                      $img = $nomup;
-
+                                    if(empty($image)) 
+                                    {
+                                        $imageError = 'Ce champ ne peut pas être vide';
+                                        $isSuccess = false;
+                                    }
+                                    else
+                                    {
+                                        $isUploadSuccess = true;
+                                        if($imageExtension != "jpg" && $imageExtension != "png" && $imageExtension != "jpeg" && $imageExtension != "gif" ) 
+                                        {
+                                            $imageError = "Les fichiers autorises sont: .jpg, .jpeg, .png, .gif";
+                                            $isUploadSuccess = false;
+                                        }
+                                        if(file_exists($imagePath)) 
+                                        {
+                                            $imageError = "Le fichier existe deja";
+                                            $isUploadSuccess = false;
+                                        }
+                                        if($_FILES["image"]["size"] > 500000) 
+                                        {
+                                            $imageError = "Le fichier ne doit pas depasser les 500KB";
+                                            $isUploadSuccess = false;
+                                        }
+                                        if($isUploadSuccess) 
+                                        {
+                                            if(!move_uploaded_file($_FILES["image"]["tmp_name"], $imagePath)) 
+                                            {
+                                                $imageError = "Il y a eu une erreur lors de l'upload";
+                                                $isUploadSuccess = false;
+                                            } 
+                                        } 
+                                    }
                                    //On execute la requete .
                                         $ins=$bdd->prepare("INSERT INTO recettes (nom, tpscuisson, puissancecuisson, tempsprepa, recette, commentaire, data_img, id_utilisateur) VALUES (?, ?, ?, ? ,? , ?, ? , ?)");
                                         $ins->execute(array($nom,$puissancecuisson,$tpscuisson,$tempsprepa,$recette,$commentaire,$img,$idutil));

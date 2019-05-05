@@ -3,6 +3,7 @@
   require('database.php');
   $bdd=Database::connect();
   include_once('cookie.php');
+  $pseudo="";
   if (isset($_POST['Valider'])) {
 
     $pseudo=htmlspecialchars($_POST['pseudo']);
@@ -28,7 +29,7 @@
         }
        
       else {
-          echo 'Mauvais identifiant ou mot de passe !';
+          $msg_error='Mauvais identifiant ou mot de passe !';
       }
       
     }
@@ -53,7 +54,7 @@
 
          <div id="TextBox1">
             <label class="labelConIns" for="uname"><b>Pseudo</b></label>
-            <input type="text" placeholder="Entrer Pseudo" name="pseudo" required>
+            <input type="text" placeholder="Entrer Pseudo" name="pseudo" value="<?php echo $pseudo;?>" required>
          </div>
 
 
@@ -61,6 +62,7 @@
          <div id="TextBox2">
             <label class="labelConIns" for="psw"><b>Mot de Passe</b></label>
             <input type="password" placeholder="Entrer Mot de passe" name="paswd" required>
+            <span class="help-inline"><?php if(!empty($msg_error)){ echo '<br />'.$msg_error; }?></span><br/>
           </div>
           
 
