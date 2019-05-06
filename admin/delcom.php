@@ -27,11 +27,13 @@
 <html>
   <head>
     <meta charset="utf-8"/>
-    <title>Suppression utilisateur</title>
+    <title>Suppression commentaire</title>
     <link href ="../Lecss.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Sniglet" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </head>
   
   <body>
@@ -46,8 +48,6 @@
                       {
                         echo '<li><a href="../deconnexion.php">Déconnexion</a></li>';
                         echo '<li><a href="../compte.php">Mon Compte</a></li>';
-                        echo $id;
-                        echo $idrecette;
                       }
                     ?>
                     <?php 
@@ -66,18 +66,19 @@
 
        <div class="container admin">
             <div class="row">
-                <h1><strong>Supprimer un utilisateur</strong></h1>
+                <h1><strong>Supprimer le commentaire</strong></h1>
                 <br>
                 <form class="form" action="" role="form" method="post">
                     <input type="hidden" name="id" value="<?php echo $id;?>"/>
                     <p class="alert alert-warning">Etes vous sur de vouloir supprimer ?</p>
                     <div class="form-actions">
                          <button type="submit" class="btn btn-warning">Oui</button>
-                         <a class="btn btn-default" href="viewuser.php">Non</a>
+                         <a class="btn btn-default" href="viewcom.php">Non</a>
                     </div>
                 </form>
             </div>
-        </div>   
+        </div> 
+      
        <?php include '../footer.html'; ?>
   </body>
 </html>

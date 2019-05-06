@@ -99,10 +99,10 @@ $commentaires->execute(array($id));
                         <label>Recette:</label><?php echo '  '.$item['recette'];?>
                       </div>
                       <div class="form-group">
-                        <label>Temps de Préparation:</label><?php echo '  '.$item['tempsprepa'];?>
+                        <label>Temps de Préparation:</label><?php echo '  '.$item['tempsprepa'];?><label> mn</label>
                       </div>
                       <div class="form-group">
-                        <label>Temps de cuisson:</label><?php echo '  '.$item['tpscuisson'];?>
+                        <label>Temps de cuisson:</label><?php echo '  '.$item['tpscuisson'];?><label> mn</label>
                       </div>
                     </form>
                     <br>

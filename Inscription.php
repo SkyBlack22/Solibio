@@ -1,7 +1,7 @@
 <?php 
 require 'database.php';
         $bdd=Database::connect();
-        $mdp_error=$prenom_error=$name_error= $mail_error= $pseudo_error = $Nom = $Prenom = $Pseudo = $adresse_mail = $date_naiss = $isSuccess = "";
+        $mdp_error=$prenom_error=$name_error= $mail_error= $pseudo_error = $Nom = $Prenom = $Pseudo = $adresse_mail = $date_naiss = "";
         if(isset($_POST['Valider']))
         {
             if(!empty($_POST['Nom']) && !empty($_POST['Prenom']) && !empty($_POST['Pseudo']) && !empty($_POST['Mail']) && !empty($_POST['MotDePasse']) && !empty($_POST['datenaiss']))
@@ -12,6 +12,7 @@ require 'database.php';
                 $Mot_de_passe =htmlspecialchars($_POST['MotDePasse']);
                 $adresse_mail = htmlspecialchars($_POST['Mail']);
                 $date_naiss = htmlspecialchars($_POST['datenaiss']);
+                $isSuccess = true;
                 
                 if (!preg_match("/^[a-zA-Z ]*$/",$Nom)) 
                 {
