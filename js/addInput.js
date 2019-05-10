@@ -6,9 +6,15 @@ function addInput(divName) {
     }
     else {
         var newdiv = document.createElement('div');
+        newdiv.setAttribute('class', 'RecetteClassLabel');
         newdiv.innerHTML = "Ingredient " + (counter + 1) +" :" +" <input type ='text' name='myInputs[]'>";
     
-        document.getElementById(divName).appendChild(newdiv);
-        counter++
+        document.getElementsByClassName(divName)[0].appendChild(newdiv);
+        counter++;
     }
+}
+function delInput(divName)
+{
+    last_child=document.getElementsByTagName('div')[9];
+    last_child.remove();
 }

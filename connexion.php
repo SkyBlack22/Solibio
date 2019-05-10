@@ -37,47 +37,37 @@
 }
     
 ?>   
-
 <!DOCTYPE html">
 <html>
-     <head><title>Connexion</title>
-        <link href ="Lecss.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Sniglet" rel="stylesheet">
-     </head>
+     
 <body>
     
   <form method='post' >
       <div class="container2">
          <img id="ImageConnection" src="images/connection.png" alt="ImageConnection" />
-
-
-
-         <div id="TextBox1">
-            <label class="labelConIns" for="uname"><b>Pseudo</b></label>
-            <input type="text" placeholder="Entrer Pseudo" name="pseudo" value="<?php echo $pseudo;?>" required>
-         </div>
-
-
-
-         <div id="TextBox2">
-            <label class="labelConIns" for="psw"><b>Mot de Passe</b></label>
-            <input type="password" placeholder="Entrer Mot de passe" name="paswd" required>
-            <span class="help-inline"><?php if(!empty($msg_error)){ echo '<br />'.$msg_error; }?></span><br/>
+         <div class="form-group row">
+             <label class="col-sm-2 col-form-label col-form-label-sm" for="pseudo">Pseudo</label>
+              <div class="col-sm-10">
+                 <input type="text" placeholder="Entrer Pseudo" name="pseudo" id="pseudo" value="<?php echo $pseudo;?>" required>
+              </div>
           </div>
-          
-
-
-
-         <div id="TextBox3">
-             <button type="submit" name="Valider" class="Valider">Login</button>
+         <div class="form-group row">
+            <label class="col-sm-2 col-form-label col-form-label-sm" for="pswd">Mot de Passe</label>
+                <div class="col-sm-10">
+                    <input type="password" placeholder="Entrer Mot de passe" name="paswd" id="paswd" required>
+                    <span class="help-inline"><?php if(!empty($msg_error)){ echo '<br />'.$msg_error; }?></span><br/>
+                </div>
+          </div>
+         <div class="form-group row">
+             <div class="col-sm-10">
+                <button type="submit" name="Valider" >Login</button>
+             </div>
          </div>
-          
-         <div id="CheckBox">
-            <input type="checkbox" name="rememberme" id="rembercheckbox"><label for="rembercheckbox">Se souvenir de moi</label>
+         <div class="form-group row">
+             <div class="col-sm-10">
+                <input type="checkbox" name="rememberme" id="rembercheckbox"><label for="rembercheckbox">Se souvenir de moi</label>
+             </div>
          </div>
-
-
-
       </div>
   </form>
   <?php include 'footer.html'; ?>

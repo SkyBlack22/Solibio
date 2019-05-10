@@ -18,19 +18,6 @@ footer
 {
 	height: 100px;
 }
-header
-{
-    font-family: Sniglet,sans-serif;
-}
-header ul li
-{
-    background-color: white;
-    color: black;
-}
-header .container
-{
-    background-color: white;
-}
 a
 {
 	text-decoration: none;
@@ -57,7 +44,7 @@ textarea{
 	border: 2px solid black;
 }
 
-.container
+.container10
 {
     font-family: Sniglet,sans-serif;
 	width: 940px;
@@ -81,41 +68,6 @@ textarea{
 	color: #ff7a00;
 }
 
-/*HEADER*/
-header{
-    border-bottom: 2px #000 solid;
-	height: 165px;
-    font-size:30px;  
-    background: #fff;
-}
-
-header h1
-{
-	float:left;
-	margin-top:22px;
-}
-header nav{
-	float:right;
-	margin-top:32px;
-}
-
-header nav ul
-{
-	float: right;
-	padding-right: 10px;
-    font-size: 23px;
-}
-
-header nav ul li
-{
-    padding-top: 17px;
-	float: right;
-	display: inline-block;
-	padding-left: 10px;
-	font-weight: bold;
-	text-transform: uppercase;
-    background-color: white;
-}
 
 
 /* FOOTER */
@@ -142,7 +94,47 @@ footer h1
 }
 
 
-
+/* NAVBAR */
+.navbar
+{
+    font-family: 'Sniglet', sans-serif;
+}
+.bg-light
+{
+    background: #fff !important;
+}
+.nav-item
+{
+    font-size:18px;
+    padding-left: 25px;
+}
+.navbar .navbar-collapse
+{
+    text-align: center;
+}
+.navbar li a
+{
+    color:#000 !important;
+}
+.navbar-light .navbar-nav .nav-link:link, .navbar-light .navbar-nav .nav-link:visited
+{
+    border-bottom: 2px solid transparent;
+    transition: border-bottom 0.5s;
+    color: #000  !important;
+    text-transform: uppercase;
+}
+.navbar-light .navbar-nav .nav-link:hover, .navbar-light .navbar-nav .nav-link:active
+{
+    border-bottom: 2px solid #FF8C00 ;
+}
+.navbar-default .navbar-toggle
+{
+    border-style:none;
+}
+.icon-bar
+{
+    background-color: #fff !important;
+}
 /*MAIN IMAGE*/
 
 #main-image
@@ -309,13 +301,13 @@ footer h1
 
 .container2
 {
-    width: 300px;
+    width: 420px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #FF8206;
-    height: 340px;
-    margin-top: 150px;
-    padding-top: 60px;
+    background-color: #FF8C00;
+    height: 400px;
+    margin-top: 100px;
+    padding-top: 40px;
     border-radius: 25px;
     border: 2px black solid;
 }
@@ -324,42 +316,19 @@ footer h1
 {
     position: relative;
     padding-left: 31px;
+    margin-top:10px;
 }
 
-
-#TextBox
-{
-    margin-top: 50px;
-    margin-bottom: 18px;
-    border: 5px;
-}
-
-#TextBox2
-{
-    position: relative;
-    margin-top:20px; /*Pour modifier la hauteur entre le TextBox et l'image user*/
-    margin-bottom: 15px;
-}
-
-#TextBox3
-{
-    position: relative;
-    margin-top: 0px;
-}
 
 #ImageConnection
 {
-    height: 60%;
+    height: 50%;
     position: static;
     display: block;
     margin: 0 auto;
     background-attachment: fixed;
 }
 
-#TextBox1 
-{
-    border: 8px;
-}
 
 input[type=text] {
   border: 1px solid black;
@@ -374,33 +343,10 @@ input[type=date] {
   border: 1px solid black;
   border-radius: 4px;
 }
-#TextBox3
-{
-    margin-left: 200px;
-    margin-top: 0px;
-}
-
 button
 {
-  position: absolute;
-  bottom:-26px;
-
-  right:-7px;
-  display: inline-block;
-  padding: 5px 9px;
-  font-size: 24px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: orange;
-  border: 1px black solid;
-  border-radius: 15px;
-  box-shadow: 0 3px #999;
-
+    background: #FF8C00;
 }
-
 button:active
 {
      background-color: orange;
@@ -413,19 +359,12 @@ button:hover
      background-color: orange;
 }
 
-/*INSCRIPTION/CONNEXION*/
-.labelConIns{
-     display:block;
-     width: 150px;
-     float: left;
-}
-
 
 /*PAGE INSCRIPTION*/
 
 #ImageInscription
 {
-	height: 40%;
+	height: 30%;
 	position: static;
 	display: block;
 	margin: 0 auto;
@@ -438,16 +377,16 @@ button:hover
 {
 	position: relative;
 	padding-left: 30px;
-	margin-top:9px; /*Pour modifier la hauteur entre le TextBox et l'image user*/
+	margin-top:10px; /*Pour modifier la hauteur entre le TextBox et l'image user*/
 }
 
 .container3
 {
-	width: 400px;
+	width: 600px;
 	margin: 0 auto;
 	padding: 20px;
 	background-color: #FF8206;
-	height: 450px;
+	height: 850px;
 	margin-top: 150px;
 	padding-top: 60px;
 	border-radius: 25px;
@@ -698,3 +637,4 @@ button:hover
     padding: 50px;
     border-radius: 10px;
 }
+

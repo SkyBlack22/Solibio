@@ -84,7 +84,6 @@
                                         $myInputs = $_POST["myInputs"];
                                         foreach ($myInputs as $eachInput) 
                                         {
-                                            echo $eachInput;
                                             $ins2=$bdd->prepare("INSERT INTO ingredient (libelle,id_recette) VALUES (?,?)");
                                             $ins2->execute(array($eachInput,$idrecette));
                                         }
@@ -119,26 +118,11 @@ function checkInput($data)
 
 <!DOCTYPE html>
 <html>
-  <head>
-        <link href ="Lecss.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Sniglet" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="js/addInput.js" language="Javascript" type="text/javascript"></script>
-    </head>
-  
-  <body id="bodyRecette">
-
-       
-
-       
-       
        <br/>
        <br/>
        <br/>
        <br/>
+    <body>
       <?php 
       if(!empty($_SESSION['ID']))
       {
@@ -159,10 +143,13 @@ function checkInput($data)
             <div class="RecetteClassLabel" id="ClassR4">
             <label for="tempsprepa">Temps de Pr&eacute;paration : <input name="tempsprepa" type="text" id="tempsprepa" size="15" value="<?php echo $tempsprepa;?>"/></label>
             </div>
-            <div class="RecetteClassLabel" id=dynamicInput>
-                Ingredient 1 :<input type="text" name="myInputs[]">
+            <div class="conteneur">
+                <div class="RecetteClassLabel" id=dynamicInput>
+                    Ingredient 1 :<input type="text" name="myInputs[]">
+                </div>
             </div>
-            <input type="button" value="Ajouter un nouvel ingrédient" onClick="addInput('dynamicInput');">
+            <input type="button" value="Ajouter un nouvel ingrédient" onClick="addInput('conteneur');">
+            <input type="button" value="Enlever un nouvel ingrédient" onClick="delInput('conteneur');">
             <div id="DivCommentaire" align="center">
                  <br />
                  <br />

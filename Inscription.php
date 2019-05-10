@@ -1,4 +1,5 @@
 <?php 
+ include 'header.php'; 
 require 'database.php';
         $bdd=Database::connect();
         $mdp_error=$prenom_error=$name_error= $mail_error= $pseudo_error = $Nom = $Prenom = $Pseudo = $adresse_mail = $date_naiss = "";
@@ -63,54 +64,56 @@ require 'database.php';
 ?>
 <!DOCTYPE html">
 <html>
-  <head>
-    <meta charset="utf-8"/>
-    <title>Les recettes</title>
-    <link href ="Lecss.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Sniglet" rel="stylesheet">
-  </head>
-  
-  <body>
-  	<?php include 'header.php'; ?>
-
-  
-
+    <body>
     <form action="" method="post" enctype="multipart/form-data">
          <div class="container3">
               <img id="ImageInscription" src="images/inscription.png" alt="ImageInscription"/>
-              <div class="FofoInscription">
-                    <label class="labelConIns" for="prenom">Prénom:</label>
-                    <input type="text" name="Prenom" id="Prenom" placeholder="Entrez votre prénom" value="<?php echo $Prenom;?>" required/>
-                    <span class="help-inline">*<?php if(!empty($prenom_error)){ echo '<br />'.$prenom_error; }?></span><br/>
+              <div class="form-group row">
+                    <label class="col-sm-2 col-form-label" for="Prenom">Prénom:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" name="Prenom" id="Prenom" placeholder="Entrez votre prénom" value="<?php echo $Prenom;?>" required/><span class="help-inline">*<?php if(!empty($prenom_error)){ echo '<br />'.$prenom_error; }?></span>
+                    </div>
               </div>
-              <div class="FofoInscription">
-                    <label class="labelConIns" for="nom">Nom:</label>
-                    <input type="text" name="Nom" id="Nom" placeholder="Entrez votre nom" value="<?php echo $Nom;?>" required/>
-                    <span class="help-inline">*<?php if(!empty($name_error)){ echo '<br />'.$name_error; }?></span>
+              <div class="form-group row">
+                    <label class="col-sm-2 col-form-label col-form-label-sm" for="Nom">Nom:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" name="Nom" id="Nom" placeholder="Entrez votre nom" value="<?php echo $Nom;?>" required/>
+                        <span class="help-inline">*<?php if(!empty($name_error)){ echo '<br />'.$name_error; }?></span>
+                    </div>
               </div>
-              <div class="FofoInscription">
-                    <label  class="labelConIns" for="pseudo">Pseudo:</label>
-                    <input type="text" name="Pseudo" id="Pseudo" placeholder="Entrez un pseudo" required value="<?php echo $Pseudo;?>"/>
-                    <span class="help-inline">* <?php if(!empty($pseudo_error)){ echo '<br />'.$pseudo_error; }?></span><br/>
+              <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label col-form-label-sm" for="Pseudo">Pseudo:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" name="Pseudo" id="Pseudo" placeholder="Entrez un pseudo" required value="<?php echo $Pseudo;?>"/>
+                        <span class="help-inline">* <?php if(!empty($pseudo_error)){ echo '<br />'.$pseudo_error; }?></span>
+                    </div>
               </div>
-              <div class="FofoInscription">
-                    <label  class="labelConIns" for="mail">E-Mail:</label>
-                    <input type="text" name="Mail" id="Mail" placeholder="Entrez un e-mail" required value="<?php echo $adresse_mail;?>"/>
-                    <span class="help-inline">* <?php if(!empty($mail_error)){ echo '<br />'.$mail_error; }?></span><br/>
+              <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label col-form-label-sm" for="Mail">E-Mail:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control form-control-sm" name="Mail" id="Mail" placeholder="Entrez un e-mail" required value="<?php echo $adresse_mail;?>"/><span class="help-inline">* <?php if(!empty($mail_error)){ echo '<br />'.$mail_error; }?></span>
+                    </div>
               </div>
-              <div class="FofoInscription1">
-                    <label  class="labelConIns" for="datenaiss">Date de naissance:</label>
-                    <input type="date" name="datenaiss" id="datenaiss" placeholder="Entrez votre date de naissance" required value="<?php echo $date_naiss;?>"/><br/>
+              <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label col-form-label-sm" for="datenaiss">Date de naissance:</label>
+                    <div class="col-sm-10">
+                        <input type="date" class="form-control form-control-sm" name="datenaiss" id="datenaiss" placeholder="Entrez votre date de naissance" required value="<?php echo $date_naiss;?>"/>
+                    </div>
               </div>
-              <div class="FofoInscription1">
-                    <label  class="labelConIns" for="mail">Mot de passe:</label>
-                    <input type="password" name="MotDePasse" id="MotDePasse" placeholder="Entrez un mot de passe" required/>
-                    <span class="help-inline">*<?php if(!empty($mdp_error)){ echo '<br />'.$mdp_error; }?></span><br/>
+              <div class="form-group row">
+                    <label  class="col-sm-2 col-form-label col-form-label-sm" for="MotDePasse">Mot de passe:</label>
+                    <div class="col-sm-10">
+                        <input type="password" class="form-control form-control-sm" name="MotDePasse" id="MotDePasse" placeholder="Entrez un mot de passe" required/>
+                        <span class="help-inline">*<?php if(!empty($mdp_error)){ echo '<br />'.$mdp_error; }?></span>
+                    </div>
               </div>
-              <div id="TextBox3">
-                    <button type="submit" value="Valider" id="Valider" class="Valider" name="Valider">M'inscrire</button>
-              </div>
+              <div class="form-group row">
+                    <div class="col-sm-10">
+                        <button type="submit" class="btn btn-primary" value="Valider" id="Valider" name="Valider">M'inscrire</button>
+                    </div>
+             </div>
         </div>
+        
     </form>
     <?php 
 

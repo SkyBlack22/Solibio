@@ -37,7 +37,10 @@
                </nav>
             </div>
         </header>
-
+    <?php
+    if(!empty($_SESSION['ID']) AND $_SESSION['ID']==33)
+    {
+    ?>
     <div class="container admin">
             <div class="row">
                 <h1><strong>Liste des recettes   </strong><a href="../Recette.php" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-plus"></span> Ajouter</a></h1>
@@ -77,6 +80,13 @@
                 </table>
             </div>
         </div>
+    <?php 
+    }
+    else
+    {
+        echo'Vous n\'êtes pas administrateur';
+    }
+    ?>
 <?php include('../footer.html'); ?>
 </body>
 

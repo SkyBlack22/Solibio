@@ -79,6 +79,10 @@
                </nav>
             </div>
       </header> 
+    <?php
+    if(!empty($_SESSION['ID']) AND $_SESSION['ID']==33)
+    {
+    ?>
       <div class="container admin">
             <div class="col">
                 <h1><strong>Supprimer un item</strong></h1>
@@ -96,7 +100,14 @@
                     </div>
                 </form>
             </div>
-        </div> 
+        </div>
+    <?php 
+    }
+    else
+    {
+        echo'Vous n\'êtes pas administrateur';
+    }
+    ?>
        <?php include '../footer.html'; ?>
   </body>
 </html>

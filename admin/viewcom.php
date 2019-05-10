@@ -40,7 +40,10 @@
             </div>
         </header>
 
-    
+    <?php
+    if(!empty($_SESSION['ID']) AND $_SESSION['ID']==33)
+    {
+    ?>
     <div class="container admin">
             <div class="row">
                 <h1><strong>Liste des commentaires</strong></h1>
@@ -74,5 +77,12 @@
                 </table>
             </div>
         </div>
+    <?php 
+    }
+    else
+    {
+        echo'Vous n\'êtes pas administrateur';
+    }
+    ?>
 <?php include('../footer.html'); ?>
 </body>
