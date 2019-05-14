@@ -47,7 +47,7 @@
 
         <div class="container admin">
             <div class="row">
-                <h1><strong>Liste des recettes   </strong><a href="Recette.php" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-plus"></span> Ajouter</a></h1>
+                <h1><strong>Liste des recettes   </strong><a href="Recette.php" class="btn btn-success btn-lg"><i class="fas fa-plus"></i> Ajouter</a></h1>
                 <table class="table table-striped table-bordered">
                   <thead>
                     <tr>
@@ -81,7 +81,7 @@
                             echo '<td>'. $item['tpscuisson']  . '</td>';
                             echo '<td>'. $item['puissancecuisson'] . '</td>';
                             echo '<td width=150>';
-                            echo '<a class="btn btn-default" href="view.php?id='.$item['id'].'"><span class="glyphicon glyphicon-eye-open"></span> Voir</a>';
+                            echo '<a class="btn btn-default" href="view.php?id='.$item['id'].'" role="button"><i class="fas fa-eye"></i> Voir</a>';
                             echo ' ';
                             echo '</td>';
                             echo '</tr>';

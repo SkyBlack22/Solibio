@@ -58,7 +58,7 @@ if(!empty($_GET['id']))
         }
     }
     
-$commentaires= $bdd->prepare('SELECT utilisateur.PSEUDO,contenu, commentaire.id, commentaire.date_post FROM commentaire, utilisateur WHERE utilisateur.ID=commentaire.id_utilisateur AND id_recette= ?  ORDER BY id DESC');
+$commentaires= $bdd->prepare('SELECT utilisateur.PSEUDO,contenu, commentaire.id, commentaire.date_post, commentaire.id_utilisateur FROM commentaire, utilisateur WHERE utilisateur.ID=commentaire.id_utilisateur AND id_recette= ?  ORDER BY id DESC');
 $commentaires->execute(array($id));
     
         
@@ -69,9 +69,10 @@ $commentaires->execute(array($id));
 <html>
   <body>
    		
-        <a href="like.php?t=1&id=<?= $id ?>">J'aime</a>(<?= $likes ?>)
+        <a href="like.php?t=1&id=<?= $id ?>" class="btn btn-success" role="button">
+        <i class="fas fa-thumbs-up"></i></a>(<?= $likes ?>)
         <br/>
-        <a href="like.php?t=2&id=<?= $id ?>">J'aime pas</a>(<?= $dislikes ?>)
+      <a href="like.php?t=2&id=<?= $id ?>" class="btn btn-danger" role="button"><i class="fas fa-thumbs-down"></i></a>(<?= $dislikes ?>)
         <br/>
        
         <div class="container admin">
@@ -108,13 +109,12 @@ $commentaires->execute(array($id));
                     </div>
                 </div>
                     <div class="form-actions">
-                      <a class="btn btn-primary" href="lecture.php"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
+                      <a class="btn btn-primary" href="lecture.php"><i class="fas fa-undo"></i></span> Retour</a>
                     </div>
                  
                 
             </div>
        </div>
-       
        
       
       <h2>Commentaire</h2>
@@ -122,14 +122,23 @@ $commentaires->execute(array($id));
         <textarea name="commentaire" placeholder="Votre commentaire..."></textarea>
         <input type="submit" value="Poster" name="submitcommentaire">
       </form>
-              
-    <?php if(isset($c_msg)) { echo $c_msg;}?>
-    <br />
-    
-    <?php while($c = $commentaires->fetch()) { ?>
-        <b><?= $c['PSEUDO'] ?>:</b> <?= $c['contenu'] ?> <?= $c['date_post'] ?> <br/>
-    
-<?php } ?>
+      <?php while($c = $commentaires->fetch()) { ?>
+      <ul class="list-unstyled">
+        <li class="media">
+            <div class="media-left">
+                <img class="avatar" src="images/img_avatar.png"  alt="Avatar">
+            </div>
+            <div class="media-body">
+                <h4 class="mt-0">  <?= $c['PSEUDO'] ?><small><i> Posté le <?= $c['date_post'] ?><?php if(isset($_SESSION['ID']) AND $_SESSION['ID']== $c['id_utilisateur'])
+            {
+                echo '<a href="admin/delcom.php?id='.$c['id'].'"><button class="btn btn-lg btn-danger" type="submit"><i class="fa fa-trash"></i></button></a>';
+            }
+       ?> </i></small></h4>
+                <?= $c['contenu'] ?>
+            </div>
+        </li>
+      </ul>                                        
+      <?php } ?>
        <?php include 'footer.html'; ?>
   </body>
 </html>

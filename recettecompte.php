@@ -81,7 +81,7 @@ require('database.php');
                             echo ' ';
                             echo '<a class="btn btn-primary" href="update.php?id='.$item['id'].'"><span class="glyphicon glyphicon-pencil"></span> Modifier</a>';
                             echo ' ';
-                            echo '<a class="btn btn-danger" href="deletecompte.php?id='.$item['id'].'"><span class="glyphicon glyphicon-remove"></span> Supprimer</a>';
+                            echo '<a class="btn btn-danger" href="deletecompte.php?id='.$item['id'].'"><i class="fa fa-trash"></i> Supprimer</a>';
                             echo '</td>';
                             echo '</tr>';
                         }

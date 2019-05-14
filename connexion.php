@@ -58,16 +58,17 @@
                     <span class="help-inline"><?php if(!empty($msg_error)){ echo '<br />'.$msg_error; }?></span><br/>
                 </div>
           </div>
-         <div class="form-group row">
-             <div class="col-sm-10">
-                <button type="submit" name="Valider" >Login</button>
-             </div>
-         </div>
-         <div class="form-group row">
+          <div class="form-group row">
              <div class="col-sm-10">
                 <input type="checkbox" name="rememberme" id="rembercheckbox"><label for="rembercheckbox">Se souvenir de moi</label>
              </div>
          </div>
+         <div class="form-group row">
+             <div class="col-sm-10">
+                <button type="submit" class="btn btn-primary" name="Valider" >Login</button>
+             </div>
+         </div>
+         
       </div>
   </form>
   <?php include 'footer.html'; ?>

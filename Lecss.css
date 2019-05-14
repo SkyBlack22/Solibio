@@ -98,6 +98,7 @@ footer h1
 .navbar
 {
     font-family: 'Sniglet', sans-serif;
+    border-bottom: 2px solid;
 }
 .bg-light
 {
@@ -169,7 +170,7 @@ footer h1
 #steps
 {
 	background-color: #efefef;
-	padding: 100px 0;
+	padding: 60px 0;
 	padding-left: 75px;
 	height: 300px;
 }
@@ -245,9 +246,10 @@ footer h1
 {
 	height: 172px;
 	width: 172px;
-	padding-left: 50px;
+	padding-left: 40px;
 	padding-top: 35px;
-	padding-bottom: 6px;
+	padding-bottom: px;
+	margin-left: 38px;
 }
 
 #Image2
@@ -257,6 +259,7 @@ footer h1
 	padding-left: 50px;
 	padding-top: 35px;
 	padding-bottom: 6px;
+	margin-left: 35px;
 }
 
 #Image3
@@ -264,8 +267,9 @@ footer h1
 	height: 172px;
 	width: 172px;
 	padding-left: 50px;
-	padding-top: 35px;
-	padding-bottom: 6px;
+	padding-top: 40px;
+	padding-bottom: 10px;
+	margin-left: 34px;
 }
 
 #steps #h41,#h42
@@ -637,4 +641,9 @@ button:hover
     padding: 50px;
     border-radius: 10px;
 }
-
+.avatar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}

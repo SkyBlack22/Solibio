@@ -56,7 +56,9 @@ require 'database.php';
                     $Mot_de_passe =md5($_POST['MotDePasse']);
                     $ins=$bdd->prepare("INSERT INTO utilisateur(NOM, PRENOM, PSEUDO, MAIL, MOTDEPASSE, DATENAISS) VALUES(?, ?, ?, ?, ?, ?)");
                     $ins->execute(array($Nom, $Prenom, $Pseudo, $adresse_mail,$Mot_de_passe,$date_naiss));
-                    echo("Inscription réussie");
+                    echo'<div class="alert alert-success">
+  <strong>Succès</strong> Inscription réussie.
+</div>';
                 }
 
             }

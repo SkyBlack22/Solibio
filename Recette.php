@@ -88,7 +88,9 @@
                                             $ins2->execute(array($eachInput,$idrecette));
                                         }
                              
-                                        echo 'Message : La Recette à bien ete enregistre !';  
+                                        echo'<div class="alert alert-success">
+                                                <strong>Attention</strong> Recette enregistrée.
+                                            </div>';  
                                     }
                              }
 
@@ -101,10 +103,7 @@
 
                   }
                }
-               else
-               {
-                   echo 'Vous devez vous connecter pour pouvoir ajouter une recette';
-               }
+              
 
 function checkInput($data) 
     {
@@ -177,7 +176,9 @@ function checkInput($data)
       <?php }
       else 
       {
-          echo'Vous devez être connecté pour ajouter une recette';
+          echo'<div class="alert alert-warning">
+  <strong>Attention!</strong> Vous devez être connecté pour pouvoir ajouter une recette
+</div>';
           echo '<div class="form-actions">
                          <a class="btn btn-primary" href="lecture.php"><span class="glyphicon glyphicon-arrow-left"></span> Retour</a>
                          </div>';
