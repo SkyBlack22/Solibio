@@ -25,6 +25,7 @@
             $userinfo=$requser->fetch();
             $_SESSION['ID'] = $userinfo['ID'];
             $_SESSION['pseudo'] = $userinfo['PSEUDO'];
+            $_SESSION['admin']= $userinfo['admin'];
             header("Location: index.php?id=".$_SESSION['ID']);
         }
        

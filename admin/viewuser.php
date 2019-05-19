@@ -1,6 +1,17 @@
 <?php
-    require('../database.php');
+    require('../database.php');#connexion a la BDD
     $bdd= Database::connect();
+    $utilisateurParPage=5;
+    $utilisateursTotalesReq=$bdd->query('SELECT id from utilisateur');
+    $utilisateursTotales= $utilisateursTotalesReq->rowCount();   
+    $pagesTotales = ceil($utilisateursTotales/$utilisateurParPage);
+    if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $pagesTotales) {
+       $_GET['page'] = intval($_GET['page']);
+       $pageCourante = $_GET['page'];
+    } else {
+       $pageCourante = 1;
+    }
+    $depart = ($pageCourante-1)*$utilisateurParPage;
 ?>
 
 
@@ -24,7 +35,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
             <a class="navbar-brand" href="../index.php">
-                <img src="../images/logo.jpg" width="50" height="50" alt="Logo"> AmicaleFulbert</a>
+                <img id="logo" src="../images/logo.jpg" width="50" height="50" alt="Logo"> AmicaleFulbert</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -63,8 +74,31 @@
             </div>
             </div>
         </nav>
+        <div class="container">
+            <br/>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8">
+                    <form class="card card-sm" method="get">
+                        <div class="card-body row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <i class="fas fa-search h4 text-body"></i>
+                            </div>
+                            <!--end of col-->
+                            <div class="col">
+                                <input class="form-control form-control-lg form-control-borderless" type="search" name="q" placeholder="Rechercher un utilisateur">
+                            </div>
+                            <!--end of col-->
+                            <div class="col-auto">
+                                <button class="btn btn-lg btn-success" type="submit">Search</button>
+                            </div>
+                            <!--end of col-->
+                        </div>
+                    </form>
+                </div>            <!--end of col-->
+            </div>
+        </div>
     <?php
-    if(!empty($_SESSION['ID']) AND $_SESSION['ID']==33)
+    if(!empty($_SESSION['ID']) AND $_SESSION['admin']==1)
     {
     ?>
     
@@ -77,22 +111,35 @@
                       <th>Nom</th>
                       <th>Prénom</th>
                       <th>Adresse Mail</th>
-                      <th>Date de naissance</th>
+                      <th>Statut</th>
                       <th>Actions</th>
                     </tr>
                   </thead>
                     
                   <tbody>
                       <?php
-                        $statement = $bdd->query('SELECT utilisateur.ID, utilisateur.NOM, utilisateur.PRENOM, utilisateur.MAIL, utilisateur.DATENAISS  FROM utilisateur  ORDER BY utilisateur.ID DESC');
+                        $statement = $bdd->query('SELECT utilisateur.ID, utilisateur.NOM, utilisateur.PRENOM, utilisateur.MAIL, utilisateur.admin  FROM utilisateur  ORDER BY utilisateur.ID DESC LIMIT '.$depart.','.$utilisateurParPage);#recuperation des utilisateurs
+                        if(isset($_GET['q']) AND !empty($_GET['q'])) 
+                        {
+                            $q = htmlspecialchars($_GET['q']);
+                            $statement = $bdd->query('SELECT utilisateur.ID, utilisateur.NOM, utilisateur.PRENOM, utilisateur.MAIL, utilisateur.admin  FROM utilisateur WHERE utilisateur.NOM LIKE "%'.$q.'%" ORDER BY utilisateur.id DESC');
+                            if($statement->rowCount() == 0) 
+                            {
+                                $statement = $bdd->query('SELECT titre FROM recettes WHERE CONCAT(titre, contenu) LIKE "%'.$q.'%" ORDER BY id DESC');
+                            }    
+                        }
                         while($item = $statement->fetch()) 
                         {
                             echo '<tr>';
                             echo '<td>'. $item['NOM'] . '</td>';
                             echo '<td>'. $item['PRENOM'] . '</td>';
                             echo '<td>'. $item['MAIL']  . '</td>';
-                            echo '<td>'. $item['DATENAISS'] . '</td>';
-                            echo '<td width=150>';
+                        ?>
+                            <td><?php if($item['admin']==1){ echo 'Administrateur'; }else{ echo 'Utiilisateur'; } ?></td>
+                    <?php 
+                            echo '<td width=290>';
+                            echo '<a class="btn btn-primary" href="upadmin.php?id='.$item['ID'].'"><i class="fas fa-user-shield"></i> Promouvoir</a>';
+                            echo ' ';
                             echo '<a class="btn btn-danger" href="deluser.php?id='.$item['ID'].'"><i class="fa fa-trash"></i> Supprimer</a>';
                             echo '</td>';
                             echo '</tr>';
@@ -102,6 +149,18 @@
                   </tbody>
                 </table>
             </div>
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-end">
+                        <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+                        <li class="<?php if($pageCourante <= 1){ echo 'disabled'; } ?>">
+                            <a class="page-link" href="<?php if($pageCourante <= 1){ echo '#'; } else { echo "?page=".($pageCourante - 1); } ?>">Previous</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="<?php if($pageCourante >= $pagesTotales){ echo '#'; } else { echo "?page=".($pageCourante + 1); } ?>">Next</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="?page=<?php echo $pagesTotales; ?>">Last</a></li>
+                    </ul>
+               </nav>
         </div>
     <?php 
     }

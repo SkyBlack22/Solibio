@@ -15,7 +15,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
             <a class="navbar-brand" href="index.php">
-                <img src="images/logo.jpg" width="50" height="50" alt="Logo"> AmicaleFulbert</a>
+                <img id="logo" src="images/logo.jpg" width="50" height="50" alt="Logo"> AmicaleFulbert</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -40,7 +40,7 @@
                         <!-- bloc menu déroulant -->
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <a class="dropdown-item" href="modifiercompte.php">Modifier Compte</a>
-                            <a class="dropdown-item" href="recettecompte.php">Vos recettes</a>
+                            <a class="dropdown-item" href="recettecompte.php">Mes recettes</a>
                             <a class="dropdown-item" href="compte.php">Mon Compte</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="deconnexion.php">Se déconnecter</a>

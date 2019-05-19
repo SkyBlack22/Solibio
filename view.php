@@ -68,12 +68,16 @@ $commentaires->execute(array($id));
 <!DOCTYPE html>
 <html>
   <body>
-   		
-        <a href="like.php?t=1&id=<?= $id ?>" class="btn btn-success" role="button">
-        <i class="fas fa-thumbs-up"></i></a>(<?= $likes ?>)
-        <br/>
-      <a href="like.php?t=2&id=<?= $id ?>" class="btn btn-danger" role="button"><i class="fas fa-thumbs-down"></i></a>(<?= $dislikes ?>)
-        <br/>
+      <div class="container">
+            <div class="row">
+                <br />
+                <a href="like.php?t=1&id=<?= $id ?>" class="btn btn-success" role="button">
+                <i class="fas fa-thumbs-up"></i></a>(<?= $likes ?>)
+                <br/>
+                <a href="like.php?t=2&id=<?= $id ?>" class="btn btn-danger" role="button"><i class="fas fa-thumbs-down"></i></a>(<?= $dislikes ?>)
+                <br/>
+            </div>
+      </div>
        
         <div class="container admin">
             <div class="row">
@@ -96,6 +100,9 @@ $commentaires->execute(array($id));
                       <div class="form-group">
                         <label>Temps de cuisson:</label><?php echo '  '.$item['tpscuisson'];?><label> mn</label>
                       </div>
+                      <div class="form-group">
+                        <label>Commentaire du posteur:</label><?php echo '  '.$item['commentaire'];?><label> mn</label>
+                      </div>
                     </form>
                     <br>
                 </div>
@@ -109,7 +116,7 @@ $commentaires->execute(array($id));
                     </div>
                 </div>
                     <div class="form-actions">
-                      <a class="btn btn-primary" href="lecture.php"><i class="fas fa-undo"></i></span> Retour</a>
+                      <a class="btn btn-primary" href="lecture.php"><i class="fas fa-undo"></i> Retour</a>
                     </div>
                  
                 
@@ -124,14 +131,15 @@ $commentaires->execute(array($id));
       </form>
       <?php while($c = $commentaires->fetch()) { ?>
       <ul class="list-unstyled">
-        <li class="media">
+        <li class="media border p-3">
             <div class="media-left">
-                <img class="avatar" src="images/img_avatar.png"  alt="Avatar">
+                <img src="images/img_avatar.png"  alt="Avatar" class="align-self-start mr-3 mt-3 rounded-circle" style="width:60px;">
             </div>
             <div class="media-body">
                 <h4 class="mt-0">  <?= $c['PSEUDO'] ?><small><i> Posté le <?= $c['date_post'] ?><?php if(isset($_SESSION['ID']) AND $_SESSION['ID']== $c['id_utilisateur'])
             {
-                echo '<a href="admin/delcom.php?id='.$c['id'].'"><button class="btn btn-lg btn-danger" type="submit"><i class="fa fa-trash"></i></button></a>';
+                echo '<a href="updatecom.php?id='.$c['id'].'"><button class="btn btn-lg btn-success" type="submit"><i class="fa fa-pen"></i></button></a>';
+                echo '<a href="delcom.php?id='.$c['id'].'"><button class="btn btn-lg btn-danger" type="submit"><i class="fa fa-trash"></i></button></a>';
             }
        ?> </i></small></h4>
                 <?= $c['contenu'] ?>

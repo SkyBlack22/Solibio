@@ -68,7 +68,11 @@ textarea{
 	color: #ff7a00;
 }
 
-
+#logo
+{
+  border-radius: 15%;
+  margin-right: 8px;
+}
 
 /* FOOTER */
 
@@ -77,13 +81,12 @@ footer
 	font-family: Sniglet,sans-serif;
     height: 260px;
     background-color: #444;
-    margin-top: 80px;
 }
 footer h1
 {
     color: #fff;
     text-align: center;
-    padding-top: 80px;
+    padding-top: 65px;
 }
 .copyright
 {
@@ -148,7 +151,7 @@ footer h1
 }
 
 
-.button
+#main-image .button
 {
 	display: block;
 	width:300px;
@@ -160,8 +163,12 @@ footer h1
 	line-height: 50px;
 	text-align: center;
 	border-radius: 7px;
+    margin-top:-50;
 }
-
+.navbar-brand img
+{
+    border-radius: 2px;
+}
 
 
 
@@ -172,7 +179,7 @@ footer h1
 	background-color: #efefef;
 	padding: 60px 0;
 	padding-left: 75px;
-	height: 300px;
+	height: 390px;
 }
 
 #steps article
@@ -314,6 +321,7 @@ footer h1
     padding-top: 40px;
     border-radius: 25px;
     border: 2px black solid;
+    margin-bottom: 80px;
 }
 
 .container2 div
@@ -335,6 +343,10 @@ footer h1
 
 
 input[type=text] {
+  border: 1px solid black;
+  border-radius: 4px;
+}
+input[type=number] {
   border: 1px solid black;
   border-radius: 4px;
 }
@@ -395,6 +407,7 @@ button:hover
 	padding-top: 60px;
 	border-radius: 25px;
     border:2px black solid;
+    margin-bottom: 80px;
 }
 
 .FofoInscription1{
@@ -438,6 +451,10 @@ button:hover
 }
 
 .RecetteClassLabel input[type="text"] {
+    width: 220px;
+    height: 20px;
+}
+.RecetteClassLabel input[type="number"] {
     width: 220px;
     height: 20px;
 }
@@ -492,65 +509,6 @@ button:hover
 }
 
 
-/* MON COMPTE*/
-.decolink{
-   background: #f20909;
-  background-image: -webkit-linear-gradient(top, #f20909, #f70a29);
-  background-image: -moz-linear-gradient(top, #f20909, #f70a29);
-  background-image: -ms-linear-gradient(top, #f20909, #f70a29);
-  background-image: -o-linear-gradient(top, #f20909, #f70a29);
-  background-image: linear-gradient(to bottom, #f20909, #f70a29);
-  -webkit-border-radius: 16;
-  -moz-border-radius: 16;
-  border-radius: 16px;
-  color: #fff;
-  font-size: 18px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  width: 105px;
-}
-
-.decloink:hover {
-  background: #d41111;
-  background-image: -webkit-linear-gradient(top, #d41111, #bd2d2d);
-  background-image: -moz-linear-gradient(top, #d41111, #bd2d2d);
-  background-image: -ms-linear-gradient(top, #d41111, #bd2d2d);
-  background-image: -o-linear-gradient(top, #d41111, #bd2d2d);
-  background-image: linear-gradient(to bottom, #d41111, #bd2d2d);
-  text-decoration: none;
-}
-.modiflink{
-  background: #0df009;
-  background-image: -webkit-linear-gradient(top, #0df009, #0cf20c);
-  background-image: -moz-linear-gradient(top, #0df009, #0cf20c);
-  background-image: -ms-linear-gradient(top, #0df009, #0cf20c);
-  background-image: -o-linear-gradient(top, #0df009, #0cf20c);
-  background-image: linear-gradient(to bottom, #0df009, #0cf20c);
-  -webkit-border-radius: 16;
-  -moz-border-radius: 16;
-  border-radius: 16px;
-  color: #fff;
-  font-size: 22px;
-  padding: 10px 20px 10px 20px;
-  text-decoration: none;
-  width: 90px;
-}
-
-#boutonmodif
-{
-    margin-top: 30px; 
-    margin-bottom: 30px;
-}
-
-.modiflink:hover {
-  background: #3a9c0c;
-  background-image: -webkit-linear-gradient(top, #3a9c0c, #3a9c0c);
-  background-image: -moz-linear-gradient(top, #3a9c0c, #3a9c0c);
-  background-image: -ms-linear-gradient(top, #3a9c0c, #3a9c0c);
-  background-image: -o-linear-gradient(top, #3a9c0c, #3a9c0c);
-  background-image: linear-gradient(to bottom, #3a9c0c, #3a9c0c);
-  text-decoration: none;
-}
 
 /* MODIF COMPTE */
 
@@ -572,6 +530,7 @@ button:hover
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 25px;
+    margin-bottom: 80px;
 }
 
 #Container5 input
@@ -593,21 +552,6 @@ button:hover
     text-align: center;
     margin-bottom: 25px;
     text-shadow: 0.1em 0.1em 0.05em #333
-}
-#modifbouton{
-  position: static;
-  font-size: 18px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: orange;
-  border: 1px black solid;
-  border-radius: 15px;
-  box-shadow: 0 3px #999;
-  margin-top:17px;
-  margin-left:39%;
 }
 
 .form-control-borderless {
@@ -640,10 +584,4 @@ button:hover
     background: #fff;
     padding: 50px;
     border-radius: 10px;
-}
-.avatar {
-  vertical-align: middle;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
 }

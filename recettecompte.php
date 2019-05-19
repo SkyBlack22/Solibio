@@ -44,7 +44,7 @@ require('database.php');
 </div>
         <div class="container admin">
             <div class="row">
-                <h1><strong>Liste des recettes   </strong><a href="Recette.php" class="btn btn-success btn-lg"><span class="glyphicon glyphicon-plus"></span> Ajouter</a></h1>
+                <h1><strong>Liste des recettes   </strong><a href="Recette.php" class="btn btn-success btn-lg"><i class="fas fa-plus"></i> Ajouter</a></h1>
                 <table class="table table-striped table-bordered">
                   <thead>
                     <tr>
@@ -77,11 +77,11 @@ require('database.php');
                             echo '<td>'. $item['tpscuisson']  . '</td>';
                             echo '<td>'. $item['puissancecuisson'] . '</td>';
                             echo '<td width=300>';
-                            echo '<a class="btn btn-default" href="view.php?id='.$item['id'].'"><span class="glyphicon glyphicon-eye-open"></span> Voir</a>';
+                            echo '<a class="btn btn-default" href="view.php?id='.$item['id'].'"><i class="fas fa-eye"></i></a>';
                             echo ' ';
-                            echo '<a class="btn btn-primary" href="update.php?id='.$item['id'].'"><span class="glyphicon glyphicon-pencil"></span> Modifier</a>';
+                            echo '<a class="btn btn-primary" href="update.php?id='.$item['id'].'"><i class="fas fa-pen"></i> Modifier</a>';
                             echo ' ';
-                            echo '<a class="btn btn-danger" href="deletecompte.php?id='.$item['id'].'"><i class="fa fa-trash"></i> Supprimer</a>';
+                            echo '<a class="btn btn-danger" href="deletecompte.php?id='.$item['id'].'"><i class="fa fa-trash"></i></a>';
                             echo '</td>';
                             echo '</tr>';
                         }

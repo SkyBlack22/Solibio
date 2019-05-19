@@ -4,7 +4,7 @@
 
         <section id ="main-image">
               <div class="container">
-                    <br><a href="lecture.php" class="button">Découvrez nos recettes.</a>
+                    <a href="lecture.php" class="button">Découvrez nos recettes.</a>
              </div>
         </section>
 

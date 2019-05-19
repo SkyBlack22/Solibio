@@ -1,7 +1,19 @@
 <?php
-    require('../database.php');
+    require('../database.php');#connexion a la BDD
     $bdd= Database::connect();
+    $commentaireParPage=5;
+    $commentairesTotalesReq=$bdd->query('SELECT id from commentaire');
+    $commentairesTotales= $commentairesTotalesReq->rowCount();   
+    $pagesTotales = ceil($commentairesTotales/$commentaireParPage);
+    if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $pagesTotales) {
+       $_GET['page'] = intval($_GET['page']);
+       $pageCourante = $_GET['page'];
+    } else {
+       $pageCourante = 1;
+    }
+    $depart = ($pageCourante-1)*$commentaireParPage;
 ?>
+
 
 
 
@@ -24,7 +36,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
             <a class="navbar-brand" href="../index.php">
-                <img src="../images/logo.jpg" width="50" height="50" alt="Logo"> AmicaleFulbert</a>
+                <img id="logo" src="../images/logo.jpg" width="50" height="50" alt="Logo"> AmicaleFulbert</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -63,9 +75,31 @@
             </div>
             </div>
         </nav>
-
+        <div class="container">
+            <br/>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-10 col-lg-8">
+                    <form class="card card-sm" method="get">
+                        <div class="card-body row no-gutters align-items-center">
+                            <div class="col-auto">
+                                <i class="fas fa-search h4 text-body"></i>
+                            </div>
+                            <!--end of col-->
+                            <div class="col">
+                                <input class="form-control form-control-lg form-control-borderless" type="search" name="q" placeholder="Rechercher un posteur">
+                            </div>
+                            <!--end of col-->
+                            <div class="col-auto">
+                                <button class="btn btn-lg btn-success" type="submit">Search</button>
+                            </div>
+                            <!--end of col-->
+                        </div>
+                    </form>
+                </div>            <!--end of col-->
+            </div>
+        </div>
     <?php
-    if(!empty($_SESSION['ID']) AND $_SESSION['ID']==33)
+    if(!empty($_SESSION['ID']) AND $_SESSION['admin']==1)#vérification si l'utilisateur est administrateur
     {
     ?>
     <div class="container admin">
@@ -83,7 +117,16 @@
                     
                   <tbody>
                       <?php
-                        $statement = $bdd->query('SELECT utilisateur.ID, utilisateur.PSEUDO, commentaire.id, commentaire.contenu FROM utilisateur, commentaire WHERE utilisateur.ID= commentaire.id_utilisateur  ORDER BY commentaire.id DESC');
+                        $statement = $bdd->query('SELECT utilisateur.ID, utilisateur.PSEUDO, commentaire.id, commentaire.contenu FROM utilisateur, commentaire WHERE utilisateur.ID= commentaire.id_utilisateur  ORDER BY commentaire.id DESC LIMIT '.$depart.','.$commentaireParPage);#récupération des commentaires
+                        if(isset($_GET['q']) AND !empty($_GET['q'])) 
+                        {
+                            $q = htmlspecialchars($_GET['q']);
+                            $statement = $bdd->query('SELECT utilisateur.ID, utilisateur.PSEUDO, commentaire.id, commentaire.contenu FROM utilisateur, commentaire WHERE utilisateur.ID= commentaire.id_utilisateur AND utilisateur.PSEUDO LIKE "%'.$q.'%" ORDER BY commentaire.id DESC');
+                            if($statement->rowCount() == 0) 
+                            {
+                                $statement = $bdd->query('SELECT titre FROM recettes WHERE CONCAT(titre, contenu) LIKE "%'.$q.'%" ORDER BY id DESC');
+                            }    
+                        }
                         while($item = $statement->fetch()) 
                         {
                             echo '<tr>';
@@ -99,7 +142,19 @@
                       ?>
                   </tbody>
                 </table>
-            </div>
+        </div>
+                <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end">
+                    <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+                    <li class="<?php if($pageCourante <= 1){ echo 'disabled'; } ?>">
+                        <a class="page-link" href="<?php if($pageCourante <= 1){ echo '#'; } else { echo "?page=".($pageCourante - 1); } ?>">Previous</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link" href="<?php if($pageCourante >= $pagesTotales){ echo '#'; } else { echo "?page=".($pageCourante + 1); } ?>">Next</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="?page=<?php echo $pagesTotales; ?>">Last</a></li>
+                </ul>
+            </nav>
         </div>
     <?php 
     }

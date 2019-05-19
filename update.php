@@ -13,13 +13,13 @@
     if(!empty($_POST)) 
     {
         $name               = checkInput($_POST['name']);
-        $tpscuisson        = checkInput($_POST['tpscuisson']);
+        $tpscuisson         = checkInput($_POST['tpscuisson']);
         $puissancecuisson   = checkInput($_POST['puissancecuisson']);
         $tpsprepa           = checkInput($_POST['tpsprepa']);
-        $recette          = checkInput($_POST['recette']);
+        $recette            = checkInput($_POST['recette']);
         $image              = checkInput($_FILES["image"]["name"]);
-        $imagePath  = 'images/'. basename($image);
-        $id_util          =$_SESSION['ID'];
+        $imagePath          = 'images/'. basename($image);
+        $id_util            = $_SESSION['ID'];
         $imageExtension     = pathinfo($imagePath,PATHINFO_EXTENSION);
         $isSuccess          = true;
        
@@ -106,18 +106,15 @@
                 $statement->execute(array($name,$tpscuisson,$puissancecuisson,$tpsprepa,$recette,$commentaire,$id,$id_util));
                 $myInputs = $_POST["ingrInputs"];
                 $idingr= $_POST["prodId"];
-                foreach ($myInputs as $eachInput) 
+                for ($i=0; $i < count($myInputs); $i++) 
                 {
-                    foreach ($idingr as $myId)
-                    {
-                        $ins2=$db->prepare("UPDATE ingredient set libelle= ? WHERE id_recette= ? AND id_ingredient= ?");
-                        $ins2->execute(array($eachInput,$id,$myId));
-                    }
-                    
+                    $ins2=$db->prepare("UPDATE ingredient set libelle= ? WHERE id_recette= ? AND id_ingredient= ?");
+                    $ins2->execute(array($myInputs[$i],$id,$idingr[$i]));
                 }
+
+                
             }
             Database::disconnect();
-            header("Location: recettecompte.php");
         }
         else if($isImageUpdated && !$isUploadSuccess)
         {
@@ -201,7 +198,7 @@
                                 ?>
                                     <input id="prodId" name="prodId[]" type="hidden" value="<?= $ingr['id_ingredient'] ?>">
                                     <label for="ingredient">Ingredient <?php echo $instance; ?>:</label>
-                                    <input type="text" class="form-control" name="ingrInputs[]" placeholder="Ingredient" value="<?php echo $ingr['libelle'];?>">
+                                    <input type="text" class="form-control" name="ingrInputs[]" placeholder="Ingredient" value="<?php echo $ingr['libelle']; ?>">
                                <?php $instance++;
                                }
                                Database::disconnect();

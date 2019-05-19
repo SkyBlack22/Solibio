@@ -33,19 +33,14 @@
        
        <div class="container admin">
             <div class="col">
-                <h1><strong>Supprimer le compte</strong></h1>
+                <h1><strong>Supprimer la recette</strong></h1>
                 <br>
                 <form class="form" action="deletecompte.php" role="form" method="post">
                     <input type="hidden" name="id" value="<?php echo $id;?>"/>
                     <p class="alert alert-warning">Etes vous sur de vouloir supprimer ?</p>
                     <div class="form-actions">
-                        <div class="row">
-                            <button type="submit" class="btn btn-warning">Oui</button>
-                        </div>
-                        <div class="row">
-                            <a class="btn btn-default" href="recettecompte.php">Non</a>
-                        </div>
-                         
+                        <button type="submit" class="btn btn-warning">Oui</button>
+                        <a class="btn btn-default" href="recettecompte.php">Non</a>
                     </div>
                 </form>
             </div>

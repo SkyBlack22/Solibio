@@ -5,7 +5,6 @@
     $bdd=Database::connect();
     if(!empty($_SESSION['ID']))
     {
-        
         $requser=$bdd->prepare("SELECT * FROM utilisateur WHERE ID= ?");
         $requser->execute(array($_SESSION['ID']));
         $user = $requser->fetch();
@@ -24,18 +23,19 @@
 <html>
 <body>
     <?php
-    if(!empty($_SESSION['ID']))
+    if(!empty($_SESSION['ID']))#si on est connecté cela affiche l'espace Mon Compte
     {
         echo'<br /><h2>Espace Mon Compte</h2>';
         echo'
         <ul>
             <li><span>Pour gérer vos recettes postées :</span><a href="recettecompte.php"> cliquez ici.</a></li>
             <li><span>Pour modifier vos informations :</span><a href="modifiercompte.php"> cliquez ici.</a></li>
+            <li><span>Pour supprimer votre compte</span><a href="delusers.php?id='.$_SESSION['ID'].'""> cliquez ici.</a></li>
             <li><span>Pour vous déconnecter :</span><a href="deconnexion.php"> cliquez ici.</a></li>
         </ul>';
     } ?>
     <?php 
-    if(!empty($_SESSION['ID']) AND ($_SESSION['ID'] == 33))
+    if(!empty($_SESSION['ID']) AND ($_SESSION['admin']==1))#si l'utilisateur est admin cela affiche cet espace
     {
         echo'<br /><h2>Espace Administrateur</h2>';
         echo'

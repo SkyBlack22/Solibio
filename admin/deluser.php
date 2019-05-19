@@ -1,33 +1,36 @@
 <?php
+     require '../database.php';
+     $bdd=Database::connect();
      if(!empty($_GET['id'])) 
      {
-               $id = checkInput($_GET['id']);
+               $id = checkInput($_GET['id']);#recuperation de l'ID dans l'URL
      }
-    require '../database.php';
-    $bdd = Database::connect();
-    $select=$bdd->prepare("SELECT id FROM recettes WHERE id_utilisateur= ?");
-    $select->execute(array($id));
-    while ($idrec=$select->fetch())
+    if(!empty($_POST)) #après avoir appuyer sur le bouton
     {
-        $idrecette=$idrec['id'];
-    }
-    if(!empty($_POST)) 
-    {
-        
+        $idrecette="";
+        $select=$bdd->prepare("SELECT id FROM recettes WHERE id_utilisateur= ?");#requete pour recuperer l'id des recettes postées par l'utilisateur
+        $select->execute(array($id));
+        while ($idrec=$select->fetch())
+        {
+            $idrecette=$idrec['id'];
+        }
         $id= checkInput($_GET['id']);
-        $delcom = $bdd->prepare("DELETE FROM commentaire WHERE id_utilisateur = ?");
+        $delcom = $bdd->prepare("DELETE FROM commentaire WHERE id_utilisateur = ?");#suppression des commentaires de l'utilisateur
         $delcom->execute(array($id));
-        $dellikes = $bdd->prepare("DELETE FROM likes WHERE id_utilisateur = ?");
+        $dellikes = $bdd->prepare("DELETE FROM likes WHERE id_utilisateur = ?");#suppression des likes de l'utilisateur
         $dellikes->execute(array($id));
         //$deldislikes = $bdd->prepare("DELETE FROM dislikes WHERE id_utilisateur = ?");
         //$deldislikes->execute(array($id));
-        $delingredient = $bdd->prepare("DELETE FROM ingredient WHERE id_recette = ?");
-        $delingredient->execute(array($idrecette));
-        $delrecettes = $bdd->prepare("DELETE FROM recettes WHERE id_utilisateur = ?");
-        $delrecettes->execute(array($id));
-        $deluser = $bdd->prepare("DELETE FROM utilisateur WHERE ID = ?");
+        if($idrecette!="")
+        {
+            $delingredient = $bdd->prepare("DELETE FROM ingredient WHERE id_recette = ?");#suppression des ingredients liés aux recettes postées par  l'utilisateur
+            $delingredient->execute(array($idrecette));
+            $delrecettes = $bdd->prepare("DELETE FROM recettes WHERE id_utilisateur = ?");#suppression des recettes de l'utilisateur
+            $delrecettes->execute(array($id));
+        }
+        $deluser = $bdd->prepare("DELETE FROM utilisateur WHERE ID = ?");#suppression du compte de l'utilisateur
         $deluser->execute(array($id));
-        header("Location: viewuser.php"); 
+        header("Location: viewuser.php");#Redirection
     }
 
     function checkInput($data) 
@@ -57,15 +60,15 @@
     <body data-spy="scroll" data-target=".navbar" data-offset="60">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-            <a class="navbar-brand" href="index.php">
-                <img src="../images/logo.jpg" width="50" height="50" alt="Logo"> AmicaleFulbert</a>
+            <a class="navbar-brand" href="../index.php">
+                <img id="logo" src="../images/logo.jpg" width="50" height="50" alt="Logo"> AmicaleFulbert</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse"  id="navbarSupportedContent">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Accueil</a>
+                        <a class="nav-link" href="../index.php">Accueil</a>
                     </li>
 
                     <?php
@@ -98,24 +101,20 @@
             </div>
         </nav>
     <?php
-    if(!empty($_SESSION['ID']) AND $_SESSION['ID']==33)
+    if(!empty($_SESSION['ID']) AND $_SESSION['admin']==1)#verification si l'utilisateur est administrateur
     {
     ?>
       <div class="container admin">
             <div class="col">
-                <h1><strong>Supprimer un item</strong></h1>
+                <h1><strong>Supprimer cet utilisateur</strong></h1>
                 <br>
-                <form class="form" action="" role="form" method="post">
+                <form class="form-group" action="" role="form" method="post">
                     <input type="hidden" name="id" value="<?php echo $id;?>"/>
                     <p class="alert alert-warning">Etes vous sur de vouloir supprimer ?</p>
                     <div class="form-actions">
-                        <div class="row">
-                            <button type="submit" class="btn btn-warning">Oui</button>
-                        </div>
-                        <div class="row">
-                            <a class="btn btn-default" href="viewuser.php">Non</a>
-                        </div> 
-                    </div>
+                        <button type="submit" class="btn btn-warning">Oui</button>
+                        <a class="btn btn-default" href="viewuser.php">Non</a>
+                    </div> 
                 </form>
             </div>
         </div>

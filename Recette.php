@@ -117,6 +117,7 @@ function checkInput($data)
 
 <!DOCTYPE html>
 <html>
+     <script src="js/addInput.js" language="Javascript" type="text/javascript"></script>
        <br/>
        <br/>
        <br/>
@@ -129,26 +130,23 @@ function checkInput($data)
         <h1 id="Enregistrement" align="center"><strong><u>Enregistrement d'une Recette </u></strong></h1>
        <form method="post" action="" enctype="multipart/form-data" name="uplo">
           <div class="Container4">
-
             <div class="RecetteClassLabel"  id="ClassR1">
-            <label class="labelConIns2" for="nom">Nom : <input type="text" name="nom" id="nom" value="<?php echo $nom;?>"/></label>
+                <label class="labelConIns2" for="nom">Nom : <input type="text" name="nom" id="nom" value="<?php echo $nom;?>"/></label>
             </div>
-               <div class="RecetteClassLabel" id="ClassR2">
-               <label  class="labelConIns2" for="puissancecuisson">Puissance de Cuisson : <input class="RecettesLabel" name="puissancecuisson" type="text" id="puissancecuisson" size="15" value="<?php echo $puissancecuisson;?>" /></label></div>
-            
+            <div class="RecetteClassLabel" id="ClassR2">
+                <label  class="labelConIns2" for="puissancecuisson">Puissance de Cuisson : <input class="RecettesLabel" name="puissancecuisson" type="number" id="puissancecuisson" size="15" value="<?php echo $puissancecuisson;?>" /></label>
+            </div>
             <div class="RecetteClassLabel" id="ClassR3">
-            <label for="tpscuisson">Temps de Cuisson : <input name="tpscuisson" type="text" id="tpscuisson" size="15" value="<?php echo $tpscuisson;?>" /></label>
+                <label for="tpscuisson">Temps de Cuisson : <input name="tpscuisson" type="number" id="tpscuisson" size="15" value="<?php echo $tpscuisson;?>" /></label>
             </div>
             <div class="RecetteClassLabel" id="ClassR4">
-            <label for="tempsprepa">Temps de Pr&eacute;paration : <input name="tempsprepa" type="text" id="tempsprepa" size="15" value="<?php echo $tempsprepa;?>"/></label>
+                <label for="tempsprepa">Temps de Pr&eacute;paration : <input name="tempsprepa" type="number" id="tempsprepa" size="15" value="<?php echo $tempsprepa;?>"/></label>
             </div>
-            <div class="conteneur">
-                <div class="RecetteClassLabel" id=dynamicInput>
-                    Ingredient 1 :<input type="text" name="myInputs[]">
-                </div>
+            <div class="RecetteClassLabel" id="dynamicInput">
+                Ingredient 1 :<input type="text" name="myInputs[]">
             </div>
-            <input type="button" value="Ajouter un nouvel ingrédient" onClick="addInput('conteneur');">
-            <input type="button" value="Enlever un nouvel ingrédient" onClick="delInput('conteneur');">
+            <input type="button" value="+" onClick="addInput('dynamicInput');">
+          
             <div id="DivCommentaire" align="center">
                  <br />
                  <br />
@@ -171,8 +169,8 @@ function checkInput($data)
                 </div> 
                  <input id="Enregistrer" class="Valider" type="submit" name="inscription" value="Enregistrer" />
             </div>
-          </div>
-        </form>;
+           </div>
+        </form>
       <?php }
       else 
       {
