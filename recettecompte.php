@@ -76,7 +76,7 @@ require('database.php');
                             echo '<td>'. $item['tempsprepa'] . '</td>';
                             echo '<td>'. $item['tpscuisson']  . '</td>';
                             echo '<td>'. $item['puissancecuisson'] . '</td>';
-                            echo '<td width=300>';
+                            echo '<td width=227>';
                             echo '<a class="btn btn-default" href="view.php?id='.$item['id'].'"><i class="fas fa-eye"></i></a>';
                             echo ' ';
                             echo '<a class="btn btn-primary" href="update.php?id='.$item['id'].'"><i class="fas fa-pen"></i> Modifier</a>';

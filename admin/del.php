@@ -1,17 +1,33 @@
 <?php
-    require('../database.php');#connexion a la BDD
-    $bdd= Database::connect();
-    $recetteParPage=5;
-    $recettesTotalesReq=$bdd->query('SELECT id from recettes');
-    $recettesTotales= $recettesTotalesReq->rowCount();   
-    $pagesTotales = ceil($recettesTotales/$recetteParPage);
-    if(isset($_GET['page']) AND !empty($_GET['page']) AND $_GET['page'] > 0 AND $_GET['page'] <= $pagesTotales) {
-       $_GET['page'] = intval($_GET['page']);
-       $pageCourante = $_GET['page'];
-    } else {
-       $pageCourante = 1;
+     if(!empty($_GET['id'])) 
+     {
+               $id = checkInput($_GET['id']);
+     }
+    require('../database.php');
+    $bdd=Database::connect();
+    if(!empty($_POST)) 
+    {
+        $id = checkInput($_POST['id']);
+        $statement5 = $bdd->prepare("DELETE FROM commentaire WHERE id_recette = ?");
+        $statement5->execute(array($id));
+        $statement3 = $bdd->prepare("DELETE FROM likes WHERE id_recette = ?");
+        $statement3->execute(array($id));
+        $statement4 = $bdd->prepare("DELETE FROM dislikes WHERE id_recette = ?");
+        $statement4->execute(array($id));
+        $delingredient = $bdd->prepare("DELETE FROM ingredient WHERE id_recette = ?");
+        $delingredient->execute(array($id));
+        $statement = $bdd->prepare("DELETE FROM recettes WHERE id = ?");
+        $statement->execute(array($id));
+        header("Location: deleterecette.php"); 
     }
-    $depart = ($pageCourante-1)*$recetteParPage;
+
+    function checkInput($data) 
+    {
+      $data = trim($data);
+      $data = stripslashes($data);
+      $data = htmlspecialchars($data);
+      return $data;
+    }
 ?>
 
 <!DOCTYPE html">
@@ -95,79 +111,20 @@
                 </div>            <!--end of col-->
             </div>
         </div>
-    <?php
-    if(!empty($_SESSION['ID']) AND $_SESSION['admin']==1)
-    {
-    ?>
-    <div class="container admin">
-            <div class="row">
-                <h1><strong>Liste des recettes   </strong><a href="../Recette.php" class="btn btn-success btn-lg"><i class="fas fa-plus"></i> Ajouter</a></h1>
-                <table class="table table-striped table-bordered">
-                  <thead>
-                    <tr>
-                      <th>Nom</th>
-                      <th>Temps de préparation</th>
-                      <th>Temps de cuisson</th>
-                      <th>Puissance de cuisson</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                    
-                  <tbody>
-                      <?php
-                        $statement = $bdd->query('SELECT recettes.id, recettes.nom, recettes.tempsprepa, recettes.tpscuisson, recettes.puissancecuisson  FROM recettes  ORDER BY recettes.id DESC LIMIT '.$depart.','.$recetteParPage);#Requete pour récupérer la recette
-                        if(isset($_GET['q']) AND !empty($_GET['q'])) 
-                        {
-                            $q = htmlspecialchars($_GET['q']);
-                            $statement = $bdd->query('SELECT recettes.id, recettes.nom, recettes.tempsprepa, recettes.tpscuisson, recettes.puissancecuisson  FROM recettes WHERE recettes.nom LIKE "%'.$q.'%" ORDER BY recettes.id DESC');
-                            if($statement->rowCount() == 0) 
-                            {
-                                $statement = $bdd->query('SELECT titre FROM recettes WHERE CONCAT(titre, contenu) LIKE "%'.$q.'%" ORDER BY id DESC');
-                            }    
-                        }
-                        while($item = $statement->fetch()) 
-                        {
-                            echo '<tr>';
-                            echo '<td>'. $item['nom'] . '</td>';
-                            echo '<td>'. $item['tempsprepa'] . '</td>';
-                            echo '<td>'. $item['tpscuisson']  . '</td>';
-                            echo '<td>'. $item['puissancecuisson'] . '</td>';
-                            echo '<td width=240>';
-                            echo '<a class="btn btn-default" href="../view.php?id='.$item['id'].'" role="button"><i class="fas fa-eye"></i></a>';
-                            echo ' ';
-                            echo '<a class="btn btn-primary" href="../update.php?id='.$item['id'].'"><i class="fas fa-pen"></i> Modifier</a>';
-                            echo ' ';
-                            echo '<a class="btn btn-danger" href="del.php?id='.$item['id'].'"><i class="fa fa-trash"></i></a>';
-                            echo '</td>';
-                            echo '</tr>';
-                        }
-                        
-                      ?>
-                  </tbody>
-                </table>
-        </div>
-                <nav aria-label="Page navigation example">
-                <ul class="pagination justify-content-end">
-                    <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
-                    <li class="<?php if($pageCourante <= 1){ echo 'disabled'; } ?>">
-                        <a class="page-link" href="<?php if($pageCourante <= 1){ echo '#'; } else { echo "?page=".($pageCourante - 1); } ?>">Previous</a>
-                    </li>
-                    <li class="page-item">
-                        <a class="page-link" href="<?php if($pageCourante >= $pagesTotales){ echo '#'; } else { echo "?page=".($pageCourante + 1); } ?>">Next</a>
-                    </li>
-                    <li class="page-item"><a class="page-link" href="?page=<?php echo $pagesTotales; ?>">Last</a></li>
-                </ul>
-            </nav>
-        </div>
-    <?php 
-    }
-    else
-    {
-        echo'<div class="alert alert-warning">
-  <strong>Attention</strong> Vous n\'êtes pas administrateur.
-</div>';
-    }
-    ?>
-<?php include('../footer.html'); ?>
-</body>
-
+       <div class="container admin">
+            <div class="col">
+                <h1><strong>Supprimer la recette</strong></h1>
+                <br>
+                <form class="form" action="del.php" role="form" method="post">
+                    <input type="hidden" name="id" value="<?php echo $id;?>"/>
+                    <p class="alert alert-warning">Etes vous sur de vouloir supprimer ?</p>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-warning">Oui</button>
+                        <a class="btn btn-default" href="deleterecette.php">Non</a>
+                    </div>
+                </form>
+            </div>
+        </div> 
+      
+       <?php include '../footer.html'; ?>
+  </body>

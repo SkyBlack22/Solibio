@@ -9,6 +9,12 @@
     if(!empty($_POST)) 
     {
         $id = checkInput($_POST['id']);
+        $statement5 = $bdd->prepare("DELETE FROM commentaire WHERE id_recette = ?");
+        $statement5->execute(array($id));
+        $statement3 = $bdd->prepare("DELETE FROM likes WHERE id_recette = ?");
+        $statement3->execute(array($id));
+        $statement4 = $bdd->prepare("DELETE FROM dislikes WHERE id_recette = ?");
+        $statement4->execute(array($id));
         $delingredient = $bdd->prepare("DELETE FROM ingredient WHERE id_recette = ?");
         $delingredient->execute(array($id));
         $statement = $bdd->prepare("DELETE FROM recettes WHERE id = ? AND id_utilisateur= ?");

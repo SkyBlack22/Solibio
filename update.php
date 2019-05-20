@@ -90,15 +90,12 @@
                 $statement->execute(array($name,$tpscuisson,$puissancecuisson,$tpsprepa,$recette, $commentaire,$image,$id,$id_util));
                 $myInputs = $_POST["ingrInputs"];
                 $idingr= $_POST["prodId"];
-                foreach ($myInputs as $eachInput) 
+                for ($i=0; $i < count($myInputs); $i++) 
                 {
-                    foreach ($idingr as $myId)
-                    {
-                        $ins2=$db->prepare("UPDATE ingredient set libelle= ? WHERE id_recette= ? AND id_ingredient= ?");
-                        $ins2->execute(array($eachInput,$id,$myId));
-                    }
-                    
+                    $ins2=$db->prepare("UPDATE ingredient set libelle= ? WHERE id_recette= ? AND id_ingredient= ?");
+                    $ins2->execute(array($myInputs[$i],$id,$idingr[$i]));
                 }
+                header('Location: recettecompte.php');
             }
             else
             {
@@ -111,7 +108,7 @@
                     $ins2=$db->prepare("UPDATE ingredient set libelle= ? WHERE id_recette= ? AND id_ingredient= ?");
                     $ins2->execute(array($myInputs[$i],$id,$idingr[$i]));
                 }
-
+                header('Location: recettecompte.php');
                 
             }
             Database::disconnect();
