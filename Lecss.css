@@ -374,7 +374,15 @@ button:hover
 {
      background-color: orange;
 }
-
+#buttonlogin
+{
+     bottom: 90px;
+     left: 250px;
+}
+#RememberMe
+{
+     bottom: 15px;
+}
 
 /*PAGE INSCRIPTION*/
 
