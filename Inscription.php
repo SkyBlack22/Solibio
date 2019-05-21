@@ -73,27 +73,27 @@ require 'database.php';
               <div class="form-group row">
                     <label class="col-sm-2 col-form-label" for="Prenom">Prénom:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control form-control-sm" name="Prenom" id="Prenom" placeholder="Entrez votre prénom" value="<?php echo $Prenom;?>" required/><span class="help-inline">*<?php if(!empty($prenom_error)){ echo '<br />'.$prenom_error; }?></span>
+                        <input type="text" class="form-control form-control-sm" name="Prenom" id="Prenom" placeholder="Entrez votre prénom" value="<?php echo $Prenom;?>" required/><span class="help-inline"><?php if(!empty($prenom_error)){ echo '<br />'.$prenom_error; }?></span>
                     </div>
               </div>
               <div class="form-group row">
                     <label class="col-sm-2 col-form-label col-form-label-sm" for="Nom">Nom:</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control form-control-sm" name="Nom" id="Nom" placeholder="Entrez votre nom" value="<?php echo $Nom;?>" required/>
-                        <span class="help-inline">*<?php if(!empty($name_error)){ echo '<br />'.$name_error; }?></span>
+                        <span class="help-inline"><?php if(!empty($name_error)){ echo '<br />'.$name_error; }?></span>
                     </div>
               </div>
               <div class="form-group row">
                     <label  class="col-sm-2 col-form-label col-form-label-sm" for="Pseudo">Pseudo:</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control form-control-sm" name="Pseudo" id="Pseudo" placeholder="Entrez un pseudo" required value="<?php echo $Pseudo;?>"/>
-                        <span class="help-inline">* <?php if(!empty($pseudo_error)){ echo '<br />'.$pseudo_error; }?></span>
+                        <span class="help-inline"><?php if(!empty($pseudo_error)){ echo '<br />'.$pseudo_error; }?></span>
                     </div>
               </div>
               <div class="form-group row">
                     <label  class="col-sm-2 col-form-label col-form-label-sm" for="Mail">E-Mail:</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control form-control-sm" name="Mail" id="Mail" placeholder="Entrez un e-mail" required value="<?php echo $adresse_mail;?>"/><span class="help-inline">* <?php if(!empty($mail_error)){ echo '<br />'.$mail_error; }?></span>
+                        <input type="text" class="form-control form-control-sm" name="Mail" id="Mail" placeholder="Entrez un e-mail" required value="<?php echo $adresse_mail;?>"/><span class="help-inline"><?php if(!empty($mail_error)){ echo '<br />'.$mail_error; }?></span>
                     </div>
               </div>
               <div class="form-group row">
@@ -106,7 +106,7 @@ require 'database.php';
                     <label  class="col-sm-2 col-form-label col-form-label-sm" for="MotDePasse">Mot de passe:</label>
                     <div class="col-sm-10">
                         <input type="password" class="form-control form-control-sm" name="MotDePasse" id="MotDePasse" placeholder="Entrez un mot de passe" required/>
-                        <span class="help-inline">*<?php if(!empty($mdp_error)){ echo '<br />'.$mdp_error; }?></span>
+                        <span class="help-inline"><?php if(!empty($mdp_error)){ echo '<br />'.$mdp_error; }?></span>
                     </div>
               </div>
               <div class="form-group row">

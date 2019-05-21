@@ -78,7 +78,7 @@
                                     if($isUploadSuccess && $isSuccess)
                                     {
                                         $ins=$bdd->prepare("INSERT INTO recettes (nom, tpscuisson, puissancecuisson, tempsprepa, recette, commentaire, data_img, id_utilisateur) VALUES (?, ?, ?, ? ,? , ?, ? , ?)");
-                                        $ins->execute(array($nom,$puissancecuisson,$tpscuisson,$tempsprepa,$recette,$commentaire,$image,$idutil));
+                                        $ins->execute(array($nom,$tpscuisson,$puissancecuisson,$tempsprepa,$recette,$commentaire,$image,$idutil));
                                         $idrecette=$bdd->lastInsertId();
                                         
                                         $myInputs = $_POST["myInputs"];
@@ -96,7 +96,7 @@
 
                          else
                          {
-                                   echo 'Erreur : Tu n\'as pas rempli les informations minimum( Nom, Type, Ingredient 1, Ingredient 2, Temps de cuisson, Temps de Préparation et Recette)';
+                                   echo '<div class="alert alert-warning">Erreur : Tu n\'as pas rempli les informations minimum( Nom, Type, Ingredient 1, Ingredient 2, Temps de cuisson, Temps de Préparation et Recette)</div>';
                          }
 
 
