@@ -60,11 +60,11 @@
                 </div>
           </div>
           <div class="form-group row">
-             <div class="col-sm-10">
+             <div  id="RememberMe" class="col-sm-10">
                 <input type="checkbox" name="rememberme" id="rembercheckbox"><label for="rembercheckbox">Se souvenir de moi</label>
              </div>
          </div>
-         <div class="form-group row">
+         <div id="buttonlogin" class="form-group row">
              <div class="col-sm-10">
                 <button type="submit" class="btn btn-primary" name="Valider" >Login</button>
              </div>
